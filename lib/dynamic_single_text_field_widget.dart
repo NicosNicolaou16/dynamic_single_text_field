@@ -18,23 +18,35 @@ class _DynamicSingleTextFieldWidgetState
   Widget build(BuildContext context) {
     return ListView.builder(
         itemCount: widget.itemCount,
-        shrinkWrap: true,
+        shrinkWrap: false,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          return Container(
-            width: 70,
-            height: 150,
-            margin: EdgeInsets.only(left: 20),
-            child: TextField(
-              textAlign: TextAlign.center,
-              inputFormatters: [
-                LengthLimitingTextInputFormatter(1),
-              ],
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: "h",
+          return Column(
+            children: [
+              Container(
+                margin: EdgeInsets.only(left: 20),
+                child: Text("top text"),
               ),
-            ),
+              Container(
+                width: 70,
+                height: 70,
+                margin: EdgeInsets.only(left: 20),
+                child: TextField(
+                  textAlign: TextAlign.center,
+                  inputFormatters: [
+                    LengthLimitingTextInputFormatter(1),
+                  ],
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: "h",
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 20),
+                child: Text("bottom text"),
+              ),
+            ],
           );
         });
   }
