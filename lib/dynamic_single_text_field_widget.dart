@@ -5,22 +5,28 @@ import 'package:flutter/services.dart';
 
 class DynamicSingleTextFieldWidget extends StatefulWidget {
   final List<SingleTextModel> singleTextModelList;
+  double singleTextHeight;
+  double singleTextWidth;
   ShowLabelType showLabelType;
   String singleHintText;
   TextStyle? singleHintTextStyle;
   InputBorder? inputBorder;
   TextStyle? textStyleTopLabel;
   TextStyle? textStyleBottomLabel;
+  double leftMargin;
 
   DynamicSingleTextFieldWidget(
     this.singleTextModelList, {
     super.key,
+    this.singleTextHeight = 70,
+    this.singleTextWidth = 70,
     this.showLabelType = ShowLabelType.hide_labels_type,
     this.singleHintText = "",
     this.singleHintTextStyle,
     this.inputBorder,
     this.textStyleTopLabel,
     this.textStyleBottomLabel,
+    this.leftMargin = 20,
   });
 
   @override
@@ -43,7 +49,6 @@ class _DynamicSingleTextFieldWidgetState
   Widget build(BuildContext context) {
     return ListView.builder(
         itemCount: widget.singleTextModelList.length,
-        shrinkWrap: false,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           SingleTextModel singleTextModel = widget.singleTextModelList[index];
@@ -54,7 +59,7 @@ class _DynamicSingleTextFieldWidgetState
               if (widget.showLabelType == ShowLabelType.show_top_label_type ||
                   widget.showLabelType == ShowLabelType.show_both_labels_type)
                 Container(
-                  margin: EdgeInsets.only(left: 20),
+                  margin: EdgeInsets.only(left: widget.leftMargin),
                   child: Text(
                     singleTextModel.topLabel ?? "",
                     maxLines: 1,
@@ -63,9 +68,9 @@ class _DynamicSingleTextFieldWidgetState
                   ),
                 ),
               Container(
-                width: 70,
-                height: 70,
-                margin: EdgeInsets.only(left: 20),
+                height: widget.singleTextHeight,
+                width: widget.singleTextWidth,
+                margin: EdgeInsets.only(left: widget.leftMargin),
                 child: TextField(
                   controller: textEditingController,
                   textAlign: TextAlign.center,
@@ -94,7 +99,7 @@ class _DynamicSingleTextFieldWidgetState
                       ShowLabelType.show_bottom_label_type ||
                   widget.showLabelType == ShowLabelType.show_both_labels_type)
                 Container(
-                  margin: EdgeInsets.only(left: 20),
+                  margin: EdgeInsets.only(left: widget.leftMargin),
                   child: Text(
                     singleTextModel.bottomLabel ?? "",
                     maxLines: 1,
