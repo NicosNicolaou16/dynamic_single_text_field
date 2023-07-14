@@ -1,4 +1,5 @@
 import 'package:dynamic_single_text_field/dynamic_single_text_field.dart';
+import 'package:dynamic_single_text_field/model/single_text_model.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -41,7 +42,27 @@ class _MyHomePageState extends State<MyHomePage> {
         SizedBox(
           height: MediaQuery.of(context).size.height / 2,
         ),
-        Expanded(child: DynamicSingleTextFieldWidget()),
+        Expanded(
+            child: DynamicSingleTextFieldWidget(
+          [
+            SingleTextModel(
+              "a",
+              topLabel: "top1",
+              bottomLabel: "bottom1",
+            ),
+            SingleTextModel(
+              "b",
+              topLabel: "top2",
+              bottomLabel: "bottom2",
+            ),
+            SingleTextModel(
+              "c",
+              topLabel: "top3",
+              bottomLabel: "bottom3",
+            ),
+          ],
+          showLabelType: ShowLabelType.show_both_labels_type,
+        )),
       ],
     ));
   }
