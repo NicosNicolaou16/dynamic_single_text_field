@@ -1,5 +1,4 @@
 import 'package:dynamic_single_text_field/model/single_text_model.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -20,6 +19,9 @@ class DynamicSingleTextFieldWidget extends StatefulWidget {
   Color cursorColor;
   bool isReadOnly;
   bool isObscureText;
+  Color? singleTextFillColor;
+  Function? onChangeSingleText;
+  Function? onSubmitSingleText;
 
   ///Labels
   ShowLabelsType showLabelsType;
@@ -44,6 +46,9 @@ class DynamicSingleTextFieldWidget extends StatefulWidget {
     this.cursorColor = Colors.black,
     this.isReadOnly = false,
     this.isObscureText = false,
+    this.singleTextFillColor,
+    this.onChangeSingleText,
+    this.onSubmitSingleText,
     this.showLabelsType = ShowLabelsType.hide_labels_type,
     this.textStyleTopLabel,
     this.textStyleBottomLabel,
@@ -67,6 +72,9 @@ class _DynamicSingleTextFieldWidgetState
       FocusScope.of(context).nextFocus();
     }
   }
+
+  String get _getSingleTextAsString =>
+      widget.singleTextModelList.map((e) => e.singleText).join();
 
   @override
   Widget build(BuildContext context) {
@@ -112,7 +120,9 @@ class _DynamicSingleTextFieldWidgetState
       height: widget.singleTextHeight,
       width: widget.singleTextWidth,
       margin: EdgeInsets.only(
-          left: widget.widgetLeftMargin, top: widget.topLabelMarginTop),
+        left: widget.widgetLeftMargin,
+        top: widget.topLabelMarginTop,
+      ),
       child: TextField(
         controller: textEditingController,
         textAlign: TextAlign.center,
@@ -125,16 +135,24 @@ class _DynamicSingleTextFieldWidgetState
           LengthLimitingTextInputFormatter(1),
         ],
         decoration: InputDecoration(
-            border: widget.inputBorder ?? const UnderlineInputBorder(),
-            hintText: widget.singleHintText,
-            hintStyle: widget.singleHintTextStyle ?? const TextStyle()),
+          fillColor: widget.singleTextFillColor,
+          filled: widget.singleTextFillColor != null,
+          border: widget.inputBorder ?? const UnderlineInputBorder(),
+          hintText: widget.singleHintText,
+          hintStyle: widget.singleHintTextStyle ?? const TextStyle(),
+        ),
         onChanged: (String value) {
           widget.singleTextModelList[index].singleText = value;
           _focusProcess(index);
-          String singleTextAsString =
-              widget.singleTextModelList.map((e) => e.singleText).join();
-          if (kDebugMode) {
-            print(singleTextAsString);
+          if (widget.onChangeSingleText != null) {
+            String singleTextAsString = _getSingleTextAsString;
+            widget.onChangeSingleText!(singleTextAsString, index);
+          }
+        },
+        onSubmitted: (String value) {
+          if (widget.onSubmitSingleText != null) {
+            String singleTextAsString = _getSingleTextAsString;
+            widget.onSubmitSingleText!(singleTextAsString);
           }
         },
       ),
