@@ -18,6 +18,8 @@ class DynamicSingleTextFieldWidget extends StatefulWidget {
   InputBorder? inputBorder;
   TextInputType? textInputType;
   Color cursorColor;
+  bool isReadOnly;
+  bool isObscureText;
 
   ///Labels
   ShowLabelsType showLabelsType;
@@ -40,6 +42,8 @@ class DynamicSingleTextFieldWidget extends StatefulWidget {
     this.inputBorder,
     this.textInputType = TextInputType.text,
     this.cursorColor = Colors.black,
+    this.isReadOnly = false,
+    this.isObscureText = false,
     this.showLabelsType = ShowLabelsType.hide_labels_type,
     this.textStyleTopLabel,
     this.textStyleBottomLabel,
@@ -114,6 +118,8 @@ class _DynamicSingleTextFieldWidgetState
         textAlign: TextAlign.center,
         keyboardType: widget.textInputType,
         cursorColor: widget.cursorColor,
+        readOnly: widget.isReadOnly,
+        obscureText: widget.isObscureText,
         style: widget.textFieldTextStyle ?? const TextStyle(),
         inputFormatters: [
           LengthLimitingTextInputFormatter(1),
