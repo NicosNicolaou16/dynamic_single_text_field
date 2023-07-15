@@ -4,29 +4,48 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class DynamicSingleTextFieldWidget extends StatefulWidget {
+  ///ListView
   final List<SingleTextModel> singleTextModelList;
+  ScrollPhysics? scrollPhysics;
+  ScrollController? scrollController;
+
+  ///Single Text
   double singleTextHeight;
   double singleTextWidth;
-  ShowLabelType showLabelType;
+  TextStyle? textFieldTextStyle;
   String singleHintText;
   TextStyle? singleHintTextStyle;
   InputBorder? inputBorder;
+  TextInputType? textInputType;
+  Color cursorColor;
+
+  ///Labels
+  ShowLabelsType showLabelsType;
   TextStyle? textStyleTopLabel;
   TextStyle? textStyleBottomLabel;
-  double leftMargin;
+  double widgetLeftMargin;
+  double topLabelMarginTop;
+  double bottomLabelMarginBottom;
 
-  DynamicSingleTextFieldWidget(
-    this.singleTextModelList, {
+  DynamicSingleTextFieldWidget({
     super.key,
+    required this.singleTextModelList,
+    this.scrollPhysics,
+    this.scrollController,
     this.singleTextHeight = 70,
     this.singleTextWidth = 70,
-    this.showLabelType = ShowLabelType.hide_labels_type,
+    this.textFieldTextStyle,
     this.singleHintText = "",
     this.singleHintTextStyle,
     this.inputBorder,
+    this.textInputType = TextInputType.text,
+    this.cursorColor = Colors.black,
+    this.showLabelsType = ShowLabelsType.hide_labels_type,
     this.textStyleTopLabel,
     this.textStyleBottomLabel,
-    this.leftMargin = 20,
+    this.widgetLeftMargin = 20,
+    this.topLabelMarginTop = 0,
+    this.bottomLabelMarginBottom = 0,
   });
 
   @override
@@ -40,7 +59,7 @@ class _DynamicSingleTextFieldWidgetState
     if (widget.singleTextModelList[index].singleText.isEmpty && index != 0) {
       FocusScope.of(context).previousFocus();
     } else if (index != widget.singleTextModelList.length - 1 &&
-        widget.singleTextModelList[0].singleText.isNotEmpty) {
+        widget.singleTextModelList.first.singleText.isNotEmpty) {
       FocusScope.of(context).nextFocus();
     }
   }
@@ -50,70 +69,88 @@ class _DynamicSingleTextFieldWidgetState
     return ListView.builder(
         itemCount: widget.singleTextModelList.length,
         scrollDirection: Axis.horizontal,
+        physics: widget.scrollPhysics,
+        controller: widget.scrollController,
         itemBuilder: (context, index) {
           SingleTextModel singleTextModel = widget.singleTextModelList[index];
           TextEditingController textEditingController = TextEditingController();
           textEditingController.text = singleTextModel.singleText;
           return Column(
             children: [
-              if (widget.showLabelType == ShowLabelType.show_top_label_type ||
-                  widget.showLabelType == ShowLabelType.show_both_labels_type)
-                Container(
-                  margin: EdgeInsets.only(left: widget.leftMargin),
-                  child: Text(
-                    singleTextModel.topLabel ?? "",
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: widget.textStyleTopLabel ?? const TextStyle(),
-                  ),
-                ),
-              Container(
-                height: widget.singleTextHeight,
-                width: widget.singleTextWidth,
-                margin: EdgeInsets.only(left: widget.leftMargin),
-                child: TextField(
-                  controller: textEditingController,
-                  textAlign: TextAlign.center,
-                  inputFormatters: [
-                    LengthLimitingTextInputFormatter(1),
-                  ],
-                  decoration: InputDecoration(
-                      border:
-                          widget.inputBorder ?? const UnderlineInputBorder(),
-                      hintText: widget.singleHintText,
-                      hintStyle:
-                          widget.singleHintTextStyle ?? const TextStyle()),
-                  onChanged: (String value) {
-                    widget.singleTextModelList[index].singleText = value;
-                    _focusProcess(index);
-                    String fullValue = widget.singleTextModelList
-                        .map((e) => e.singleText)
-                        .join();
-                    if (kDebugMode) {
-                      print(fullValue);
-                    }
-                  },
-                ),
-              ),
-              if (widget.showLabelType ==
-                      ShowLabelType.show_bottom_label_type ||
-                  widget.showLabelType == ShowLabelType.show_both_labels_type)
-                Container(
-                  margin: EdgeInsets.only(left: widget.leftMargin),
-                  child: Text(
-                    singleTextModel.bottomLabel ?? "",
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: widget.textStyleBottomLabel ?? const TextStyle(),
-                  ),
-                ),
+              if (widget.showLabelsType == ShowLabelsType.show_top_label_type ||
+                  widget.showLabelsType == ShowLabelsType.show_both_labels_type)
+                _topLabel(singleTextModel),
+              _singleTextField(singleTextModel, textEditingController, index),
+              if (widget.showLabelsType ==
+                      ShowLabelsType.show_bottom_label_type ||
+                  widget.showLabelsType == ShowLabelsType.show_both_labels_type)
+                _bottomLabel(singleTextModel),
             ],
           );
         });
   }
+
+  Widget _topLabel(SingleTextModel singleTextModel) {
+    return Container(
+      margin: EdgeInsets.only(left: widget.widgetLeftMargin),
+      child: Text(
+        singleTextModel.topLabelText ?? "",
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+        style: widget.textStyleTopLabel ?? const TextStyle(),
+      ),
+    );
+  }
+
+  Widget _singleTextField(SingleTextModel singleTextModel,
+      TextEditingController textEditingController, int index) {
+    return Container(
+      height: widget.singleTextHeight,
+      width: widget.singleTextWidth,
+      margin: EdgeInsets.only(
+          left: widget.widgetLeftMargin, top: widget.topLabelMarginTop),
+      child: TextField(
+        controller: textEditingController,
+        textAlign: TextAlign.center,
+        keyboardType: widget.textInputType,
+        cursorColor: widget.cursorColor,
+        style: widget.textFieldTextStyle ?? const TextStyle(),
+        inputFormatters: [
+          LengthLimitingTextInputFormatter(1),
+        ],
+        decoration: InputDecoration(
+            border: widget.inputBorder ?? const UnderlineInputBorder(),
+            hintText: widget.singleHintText,
+            hintStyle: widget.singleHintTextStyle ?? const TextStyle()),
+        onChanged: (String value) {
+          widget.singleTextModelList[index].singleText = value;
+          _focusProcess(index);
+          String singleTextAsString =
+              widget.singleTextModelList.map((e) => e.singleText).join();
+          if (kDebugMode) {
+            print(singleTextAsString);
+          }
+        },
+      ),
+    );
+  }
+
+  Widget _bottomLabel(SingleTextModel singleTextModel) {
+    return Container(
+      margin: EdgeInsets.only(
+          left: widget.widgetLeftMargin,
+          bottom: widget.bottomLabelMarginBottom),
+      child: Text(
+        singleTextModel.bottomLabelText ?? "",
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+        style: widget.textStyleBottomLabel ?? const TextStyle(),
+      ),
+    );
+  }
 }
 
-enum ShowLabelType {
+enum ShowLabelsType {
   show_top_label_type,
   show_bottom_label_type,
   show_both_labels_type,

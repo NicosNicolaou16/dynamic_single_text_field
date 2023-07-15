@@ -33,6 +33,39 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final List<SingleTextModel> singleTextModelList = [
+    SingleTextModel(
+      "",
+      topLabelText: "top1",
+      bottomLabelText: "bottom1",
+    ),
+    SingleTextModel(
+      "",
+      topLabelText: "top2",
+      bottomLabelText: "bottom2",
+    ),
+    SingleTextModel(
+      "",
+      topLabelText: "top3",
+      bottomLabelText: "bottom3",
+    ),
+    SingleTextModel(
+      "",
+      topLabelText: "top4",
+      bottomLabelText: "bottom4",
+    ),
+    SingleTextModel(
+      "",
+      topLabelText: "top5",
+      bottomLabelText: "bottom5",
+    ),
+    SingleTextModel(
+      "",
+      topLabelText: "top6",
+      bottomLabelText: "bottom6",
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,24 +77,9 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         Expanded(
             child: DynamicSingleTextFieldWidget(
-          [
-            SingleTextModel(
-              "a",
-              topLabel: "top1",
-              bottomLabel: "bottom1",
-            ),
-            SingleTextModel(
-              "b",
-              topLabel: "top2",
-              bottomLabel: "bottom2",
-            ),
-            SingleTextModel(
-              "c",
-              topLabel: "top3",
-              bottomLabel: "bottom3",
-            ),
-          ],
-          showLabelType: ShowLabelType.show_both_labels_type,
+          singleTextModelList: singleTextModelList,
+          showLabelsType: ShowLabelsType.show_both_labels_type,
+          textInputType: TextInputType.number,
         )),
       ],
     ));
