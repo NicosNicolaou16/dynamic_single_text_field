@@ -138,6 +138,7 @@ class _DynamicSingleTextFieldWidgetState
           fillColor: widget.singleTextFillColor,
           filled: widget.singleTextFillColor != null,
           border: widget.inputBorder ?? const UnderlineInputBorder(),
+          focusedBorder: widget.inputBorder ?? const UnderlineInputBorder(),
           hintText: widget.singleHintText,
           hintStyle: widget.singleHintTextStyle ?? const TextStyle(),
         ),
