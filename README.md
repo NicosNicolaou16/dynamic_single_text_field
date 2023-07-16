@@ -1,6 +1,6 @@
 # dynamic_single_text_field
 
-This library is a dynamic single text field with different customization and top/bottom labels.
+This library is a dynamic single text field (as PIN code) with different customization and top/bottom labels.
 
 ```dart
 

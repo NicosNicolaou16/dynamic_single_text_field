@@ -1,8 +1,8 @@
-import 'package:dynamic_single_text_field/model/single_text_model.dart';
+import 'package:dynamic_single_text_field/src/model/single_text_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class DynamicSingleTextFieldWidget extends StatefulWidget {
+class DynamicSingleTextField extends StatefulWidget {
   ///ListView
   final List<SingleTextModel> singleTextModelList;
   ScrollPhysics? scrollPhysics;
@@ -31,7 +31,7 @@ class DynamicSingleTextFieldWidget extends StatefulWidget {
   double topLabelMarginTop;
   double bottomLabelMarginBottom;
 
-  DynamicSingleTextFieldWidget({
+  DynamicSingleTextField({
     super.key,
     required this.singleTextModelList,
     this.scrollPhysics,
@@ -58,12 +58,12 @@ class DynamicSingleTextFieldWidget extends StatefulWidget {
   });
 
   @override
-  State<DynamicSingleTextFieldWidget> createState() =>
-      _DynamicSingleTextFieldWidgetState();
+  State<DynamicSingleTextField> createState() =>
+      _DynamicSingleTextFieldState();
 }
 
-class _DynamicSingleTextFieldWidgetState
-    extends State<DynamicSingleTextFieldWidget> {
+class _DynamicSingleTextFieldState
+    extends State<DynamicSingleTextField> {
   _focusProcess(int index) {
     if (widget.singleTextModelList[index].singleText.isEmpty && index != 0) {
       FocusScope.of(context).previousFocus();

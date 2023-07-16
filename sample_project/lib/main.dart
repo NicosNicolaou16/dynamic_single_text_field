@@ -1,5 +1,4 @@
 import 'package:dynamic_single_text_field/dynamic_single_text_field.dart';
-import 'package:dynamic_single_text_field/model/single_text_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -77,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
           height: MediaQuery.of(context).size.height / 3,
         ),
         Expanded(
-          child: DynamicSingleTextFieldWidget(
+          child: DynamicSingleTextField(
             singleTextModelList: singleTextModelList,
             showLabelsType: ShowLabelsType.show_both_labels_type,
             inputBorder: const OutlineInputBorder(
