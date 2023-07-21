@@ -66,6 +66,17 @@ class _MyHomePageState extends State<MyHomePage> {
     ),
   ];
 
+  InputBorder getInputBorder() => const OutlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.green,
+        ),
+        borderRadius: BorderRadius.all(
+          Radius.circular(
+            50,
+          ),
+        ),
+      );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,16 +90,10 @@ class _MyHomePageState extends State<MyHomePage> {
           child: DynamicSingleTextField(
             singleTextModelList: singleTextModelList,
             showLabelsType: ShowLabelsType.show_both_labels_type,
-            inputBorder: const OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Colors.grey,
-              ),
-              borderRadius: BorderRadius.all(
-                Radius.circular(
-                  50,
-                ),
-              ),
-            ),
+            inputBorder: getInputBorder(),
+            enableInputBorder: getInputBorder(),
+            disableInputBorder: getInputBorder(),
+            focusedInputBorder: getInputBorder(),
             textInputType: TextInputType.number,
             onChangeSingleText: (String value, int index) {
               if (kDebugMode) {

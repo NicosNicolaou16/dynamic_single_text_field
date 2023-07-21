@@ -15,6 +15,9 @@ class DynamicSingleTextField extends StatefulWidget {
   String singleHintText;
   TextStyle? singleHintTextStyle;
   InputBorder? inputBorder;
+  InputBorder? enableInputBorder;
+  InputBorder? disableInputBorder;
+  InputBorder? focusedInputBorder;
   TextInputType? textInputType;
   Color cursorColor;
   bool isReadOnly;
@@ -42,6 +45,9 @@ class DynamicSingleTextField extends StatefulWidget {
     this.singleHintText = "",
     this.singleHintTextStyle,
     this.inputBorder,
+    this.enableInputBorder,
+    this.disableInputBorder,
+    this.focusedInputBorder,
     this.textInputType = TextInputType.text,
     this.cursorColor = Colors.black,
     this.isReadOnly = false,
@@ -138,7 +144,9 @@ class _DynamicSingleTextFieldState
           fillColor: widget.singleTextFillColor,
           filled: widget.singleTextFillColor != null,
           border: widget.inputBorder ?? const UnderlineInputBorder(),
-          focusedBorder: widget.inputBorder ?? const UnderlineInputBorder(),
+          focusedBorder: widget.focusedInputBorder ?? const UnderlineInputBorder(),
+          disabledBorder:  widget.disableInputBorder ?? const UnderlineInputBorder(),
+          enabledBorder:  widget.enableInputBorder ?? const UnderlineInputBorder(),
           hintText: widget.singleHintText,
           hintStyle: widget.singleHintTextStyle ?? const TextStyle(),
         ),
