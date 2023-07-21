@@ -80,29 +80,30 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        SizedBox(
-          height: MediaQuery.of(context).size.height / 3,
-        ),
-        Expanded(
-          child: DynamicSingleTextField(
-            singleTextModelList: singleTextModelList,
-            showLabelsType: ShowLabelsType.show_both_labels_type,
-            inputBorder: getInputBorder(),
-            enableInputBorder: getInputBorder(),
-            disableInputBorder: getInputBorder(),
-            focusedInputBorder: getInputBorder(),
-            textInputType: TextInputType.number,
-            onChangeSingleText: (String value, int index) {
-              if (kDebugMode) {
-                print("value: $value index: $index");
-              }
-            },
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+            height: MediaQuery.of(context).size.height / 3,
           ),
-        ),
-      ],
-    ));
+          Expanded(
+            child: DynamicSingleTextField(
+              singleTextModelList: singleTextModelList,
+              showLabelsType: ShowLabelsType.show_both_labels_type,
+              inputBorder: getInputBorder(),
+              enableInputBorder: getInputBorder(),
+              disableInputBorder: getInputBorder(),
+              focusedInputBorder: getInputBorder(),
+              textInputType: TextInputType.number,
+              onChangeSingleText: (String value, int index) {
+                if (kDebugMode) {
+                  print("value: $value index: $index");
+                }
+              },
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
