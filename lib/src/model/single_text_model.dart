@@ -3,8 +3,8 @@ class SingleTextModel {
   String? topLabelText;
   String? bottomLabelText;
 
-  SingleTextModel(
-    this.singleText, {
+  SingleTextModel({
+    this.singleText = "",
     this.topLabelText,
     this.bottomLabelText,
   });

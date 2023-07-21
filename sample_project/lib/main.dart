@@ -35,32 +35,32 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final List<SingleTextModel> singleTextModelList = [
     SingleTextModel(
-      "",
+      singleText: "",
       topLabelText: "top1",
       bottomLabelText: "bottom1",
     ),
     SingleTextModel(
-      "",
+      singleText: "",
       topLabelText: "top2",
       bottomLabelText: "bottom2",
     ),
     SingleTextModel(
-      "",
+      singleText: "",
       topLabelText: "top3",
       bottomLabelText: "bottom3",
     ),
     SingleTextModel(
-      "",
+      singleText: "",
       topLabelText: "top4",
       bottomLabelText: "bottom4",
     ),
     SingleTextModel(
-      "",
+      singleText: "",
       topLabelText: "top5",
       bottomLabelText: "bottom5",
     ),
     SingleTextModel(
-      "",
+      singleText: "",
       topLabelText: "top6",
       bottomLabelText: "bottom6",
     ),
