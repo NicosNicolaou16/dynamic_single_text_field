@@ -5,47 +5,29 @@ different customization and top/bottom labels.
 
 ```dart
 
-final List<SingleTextModel> singleTextModelList = [
-  SingleTextModel(
-    singleText: "",
-    topLabelText: "top1",
-    bottomLabelText: "bottom1",
-  ),
-  SingleTextModel(
-    singleText: "",
-    topLabelText: "top2",
-    bottomLabelText: "bottom2",
-  ),
-  SingleTextModel(
-    singleText: "",
-    topLabelText: "top3",
-    bottomLabelText: "bottom3",
-  ),
-  SingleTextModel(
-    singleText: "",
-    topLabelText: "top4",
-    bottomLabelText: "bottom4",
-  ),
-  SingleTextModel(
-    singleText: "",
-    topLabelText: "top5",
-    bottomLabelText: "bottom5",
-  ),
-  SingleTextModel(
-    singleText: "",
-    topLabelText: "top6",
-    bottomLabelText: "bottom6",
-  ),
-];
+final List<SingleTextModel> singleTextModelList = [];
+
+@override
+void initState() {
+  List.generate(
+      7,
+          (index) =>
+          singleTextModelList.add(SingleTextModel(
+              singleText: "",
+              topLabelText: "top label $index",
+              bottomLabelText: "bottom label $index")));
+  super.initState();
+}
 
 InputBorder getInputBorder() =>
     const OutlineInputBorder(
       borderSide: BorderSide(
         color: Colors.green,
+        width: 3,
       ),
       borderRadius: BorderRadius.all(
         Radius.circular(
-          50,
+          70,
         ),
       ),
     );
@@ -67,6 +49,8 @@ Widget build(BuildContext context) {
             singleTextModelList: singleTextModelList,
             showLabelsType: ShowLabelsType.show_both_labels_type,
             inputBorder: getInputBorder(),
+            topLabelMarginBottom: 20,
+            bottomLabelMarginTop: 20,
             enableInputBorder: getInputBorder(),
             disableInputBorder: getInputBorder(),
             focusedInputBorder: getInputBorder(),

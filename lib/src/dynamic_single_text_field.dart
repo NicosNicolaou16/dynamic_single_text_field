@@ -31,8 +31,8 @@ class DynamicSingleTextField extends StatefulWidget {
   TextStyle? textStyleTopLabel;
   TextStyle? textStyleBottomLabel;
   double widgetLeftMargin;
-  double topLabelMarginTop;
-  double bottomLabelMarginBottom;
+  double topLabelMarginBottom;
+  double bottomLabelMarginTop;
 
   DynamicSingleTextField({
     super.key,
@@ -59,17 +59,15 @@ class DynamicSingleTextField extends StatefulWidget {
     this.textStyleTopLabel,
     this.textStyleBottomLabel,
     this.widgetLeftMargin = 20,
-    this.topLabelMarginTop = 0,
-    this.bottomLabelMarginBottom = 0,
+    this.topLabelMarginBottom = 0,
+    this.bottomLabelMarginTop = 0,
   });
 
   @override
-  State<DynamicSingleTextField> createState() =>
-      _DynamicSingleTextFieldState();
+  State<DynamicSingleTextField> createState() => _DynamicSingleTextFieldState();
 }
 
-class _DynamicSingleTextFieldState
-    extends State<DynamicSingleTextField> {
+class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
   _focusProcess(int index) {
     if (widget.singleTextModelList[index].singleText.isEmpty && index != 0) {
       FocusScope.of(context).previousFocus();
@@ -110,7 +108,10 @@ class _DynamicSingleTextFieldState
 
   Widget _topLabel(SingleTextModel singleTextModel) {
     return Container(
-      margin: EdgeInsets.only(left: widget.widgetLeftMargin),
+      margin: EdgeInsets.only(
+        left: widget.widgetLeftMargin,
+        bottom: widget.topLabelMarginBottom,
+      ),
       child: Text(
         singleTextModel.topLabelText ?? "",
         maxLines: 1,
@@ -127,7 +128,6 @@ class _DynamicSingleTextFieldState
       width: widget.singleTextWidth,
       margin: EdgeInsets.only(
         left: widget.widgetLeftMargin,
-        top: widget.topLabelMarginTop,
       ),
       child: TextField(
         controller: textEditingController,
@@ -144,9 +144,12 @@ class _DynamicSingleTextFieldState
           fillColor: widget.singleTextFillColor,
           filled: widget.singleTextFillColor != null,
           border: widget.inputBorder ?? const UnderlineInputBorder(),
-          focusedBorder: widget.focusedInputBorder ?? const UnderlineInputBorder(),
-          disabledBorder:  widget.disableInputBorder ?? const UnderlineInputBorder(),
-          enabledBorder:  widget.enableInputBorder ?? const UnderlineInputBorder(),
+          focusedBorder:
+              widget.focusedInputBorder ?? const UnderlineInputBorder(),
+          disabledBorder:
+              widget.disableInputBorder ?? const UnderlineInputBorder(),
+          enabledBorder:
+              widget.enableInputBorder ?? const UnderlineInputBorder(),
           hintText: widget.singleHintText,
           hintStyle: widget.singleHintTextStyle ?? const TextStyle(),
         ),
@@ -171,8 +174,7 @@ class _DynamicSingleTextFieldState
   Widget _bottomLabel(SingleTextModel singleTextModel) {
     return Container(
       margin: EdgeInsets.only(
-          left: widget.widgetLeftMargin,
-          bottom: widget.bottomLabelMarginBottom),
+          left: widget.widgetLeftMargin, top: widget.bottomLabelMarginTop),
       child: Text(
         singleTextModel.bottomLabelText ?? "",
         maxLines: 1,
