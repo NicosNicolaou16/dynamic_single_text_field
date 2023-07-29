@@ -11,26 +11,24 @@ final List<SingleTextModel> singleTextModelList = [];
 void initState() {
   List.generate(
       7,
-          (index) =>
-          singleTextModelList.add(SingleTextModel(
-              singleText: "",
-              topLabelText: "top label $index",
-              bottomLabelText: "bottom label $index")));
+          (index) => singleTextModelList.add(SingleTextModel(
+          singleText: "",
+          topLabelText: "top label $index",
+          bottomLabelText: "bottom label $index")));
   super.initState();
 }
 
-InputBorder getInputBorder() =>
-    const OutlineInputBorder(
-      borderSide: BorderSide(
-        color: Colors.green,
-        width: 3,
-      ),
-      borderRadius: BorderRadius.all(
-        Radius.circular(
-          70,
-        ),
-      ),
-    );
+InputBorder getInputBorder() => const OutlineInputBorder(
+  borderSide: BorderSide(
+    color: Colors.green,
+    width: 3,
+  ),
+  borderRadius: BorderRadius.all(
+    Radius.circular(
+      70,
+    ),
+  ),
+);
 
 @override
 Widget build(BuildContext context) {
@@ -39,28 +37,28 @@ Widget build(BuildContext context) {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SizedBox(
-          height: MediaQuery
-              .of(context)
-              .size
-              .height / 3,
+          height: MediaQuery.of(context).size.height / 3,
         ),
-        Expanded(
-          child: DynamicSingleTextField(
-            singleTextModelList: singleTextModelList,
-            showLabelsType: ShowLabelsType.show_both_labels_type,
-            inputBorder: getInputBorder(),
-            topLabelMarginBottom: 20,
-            bottomLabelMarginTop: 20,
-            enableInputBorder: getInputBorder(),
-            disableInputBorder: getInputBorder(),
-            focusedInputBorder: getInputBorder(),
-            textInputType: TextInputType.number,
-            onChangeSingleText: (String value, int index) {
-              if (kDebugMode) {
-                print("value: $value index: $index");
-              }
-            },
-          ),
+        DynamicSingleTextField(
+          singleTextModelList: singleTextModelList,
+          showLabelsType: ShowLabelsTypeEnum.show_both_labels_type,
+          inputBorder: getInputBorder(),
+          topLabelMarginBottom: 20,
+          bottomLabelMarginTop: 20,
+          enableInputBorder: getInputBorder(),
+          disableInputBorder: getInputBorder(),
+          focusedInputBorder: getInputBorder(),
+          textInputType: TextInputType.number,
+          onChangeSingleText: (String value, int index) {
+            if (kDebugMode) {
+              print("value: $value index: $index");
+            }
+          },
+          onValidationBaseOnLength: () {
+            if (kDebugMode) {
+              print("validated");
+            }
+          },
         ),
       ],
     ),
