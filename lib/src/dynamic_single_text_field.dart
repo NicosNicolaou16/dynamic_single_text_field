@@ -1,4 +1,5 @@
-import 'package:dynamic_single_text_field/src/model/single_text_model.dart';
+import 'package:dynamic_single_text_field/src/models/show_labels_type_enum.dart';
+import 'package:dynamic_single_text_field/src/models/single_text_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -22,12 +23,14 @@ class DynamicSingleTextField extends StatefulWidget {
   Color cursorColor;
   bool isReadOnly;
   bool isObscureText;
+  String obscuringCharacter;
   Color? singleTextFillColor;
   Function? onChangeSingleText;
   Function? onSubmitSingleText;
+  Function? onValidationBaseOnLength;
 
   ///Labels
-  ShowLabelsType showLabelsType;
+  ShowLabelsTypeEnum showLabelsType;
   TextStyle? textStyleTopLabel;
   TextStyle? textStyleBottomLabel;
   double widgetLeftMargin;
@@ -52,10 +55,12 @@ class DynamicSingleTextField extends StatefulWidget {
     this.cursorColor = Colors.black,
     this.isReadOnly = false,
     this.isObscureText = false,
+    this.obscuringCharacter = "•",
     this.singleTextFillColor,
     this.onChangeSingleText,
     this.onSubmitSingleText,
-    this.showLabelsType = ShowLabelsType.hide_labels_type,
+    this.onValidationBaseOnLength,
+    this.showLabelsType = ShowLabelsTypeEnum.hide_labels_type,
     this.textStyleTopLabel,
     this.textStyleBottomLabel,
     this.widgetLeftMargin = 20,
@@ -82,7 +87,8 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
+    return Expanded(
+      child: ListView.builder(
         itemCount: widget.singleTextModelList.length,
         scrollDirection: Axis.horizontal,
         physics: widget.scrollPhysics,
@@ -93,17 +99,22 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
           textEditingController.text = singleTextModel.singleText;
           return Column(
             children: [
-              if (widget.showLabelsType == ShowLabelsType.show_top_label_type ||
-                  widget.showLabelsType == ShowLabelsType.show_both_labels_type)
+              if (widget.showLabelsType ==
+                      ShowLabelsTypeEnum.show_top_label_type ||
+                  widget.showLabelsType ==
+                      ShowLabelsTypeEnum.show_both_labels_type)
                 _topLabel(singleTextModel),
               _singleTextField(singleTextModel, textEditingController, index),
               if (widget.showLabelsType ==
-                      ShowLabelsType.show_bottom_label_type ||
-                  widget.showLabelsType == ShowLabelsType.show_both_labels_type)
+                      ShowLabelsTypeEnum.show_bottom_label_type ||
+                  widget.showLabelsType ==
+                      ShowLabelsTypeEnum.show_both_labels_type)
                 _bottomLabel(singleTextModel),
             ],
           );
-        });
+        },
+      ),
+    );
   }
 
   Widget _topLabel(SingleTextModel singleTextModel) {
@@ -136,6 +147,7 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
         cursorColor: widget.cursorColor,
         readOnly: widget.isReadOnly,
         obscureText: widget.isObscureText,
+        obscuringCharacter: widget.obscuringCharacter,
         style: widget.textFieldTextStyle ?? const TextStyle(),
         inputFormatters: [
           LengthLimitingTextInputFormatter(1),
@@ -160,6 +172,13 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
             String singleTextAsString = _getSingleTextAsString;
             widget.onChangeSingleText!(singleTextAsString, index);
           }
+          if (widget.onValidationBaseOnLength != null) {
+            if (widget.singleTextModelList
+                .where((element) => element.singleText.isNotEmpty)
+                .isNotEmpty) {
+              widget.onValidationBaseOnLength!();
+            }
+          }
         },
         onSubmitted: (String value) {
           if (widget.onSubmitSingleText != null) {
@@ -183,11 +202,4 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
       ),
     );
   }
-}
-
-enum ShowLabelsType {
-  show_top_label_type,
-  show_bottom_label_type,
-  show_both_labels_type,
-  hide_labels_type
 }

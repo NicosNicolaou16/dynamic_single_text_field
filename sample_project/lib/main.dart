@@ -67,23 +67,26 @@ class _MyHomePageState extends State<MyHomePage> {
           SizedBox(
             height: MediaQuery.of(context).size.height / 3,
           ),
-          Expanded(
-            child: DynamicSingleTextField(
-              singleTextModelList: singleTextModelList,
-              showLabelsType: ShowLabelsType.show_both_labels_type,
-              inputBorder: getInputBorder(),
-              topLabelMarginBottom: 20,
-              bottomLabelMarginTop: 20,
-              enableInputBorder: getInputBorder(),
-              disableInputBorder: getInputBorder(),
-              focusedInputBorder: getInputBorder(),
-              textInputType: TextInputType.number,
-              onChangeSingleText: (String value, int index) {
-                if (kDebugMode) {
-                  print("value: $value index: $index");
-                }
-              },
-            ),
+          DynamicSingleTextField(
+            singleTextModelList: singleTextModelList,
+            showLabelsType: ShowLabelsTypeEnum.show_both_labels_type,
+            inputBorder: getInputBorder(),
+            topLabelMarginBottom: 20,
+            bottomLabelMarginTop: 20,
+            enableInputBorder: getInputBorder(),
+            disableInputBorder: getInputBorder(),
+            focusedInputBorder: getInputBorder(),
+            textInputType: TextInputType.number,
+            onChangeSingleText: (String value, int index) {
+              if (kDebugMode) {
+                print("value: $value index: $index");
+              }
+            },
+            onValidationBaseOnLength: () {
+              if (kDebugMode) {
+                print("validated");
+              }
+            },
           ),
         ],
       ),
