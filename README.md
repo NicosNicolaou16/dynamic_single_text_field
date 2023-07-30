@@ -1,7 +1,10 @@
 # dynamic_single_text_field
 
-This library is a dynamic single text field (it is like PIN code but has not PIN functionalities) with top/bottom text label, and
+This library is a dynamic single text field (it is like PIN code but has not PIN functionalities)
+with top/bottom text label, and
 different customization.
+
+![My Image](sample_project/lib/example_screenshots/Screenshot_20230730_183156.png)
 
 ```dart
 
@@ -11,24 +14,26 @@ final List<SingleTextModel> singleTextModelList = [];
 void initState() {
   List.generate(
       7,
-          (index) => singleTextModelList.add(SingleTextModel(
-          singleText: "",
-          topLabelText: "top label $index",
-          bottomLabelText: "bottom label $index")));
+          (index) =>
+          singleTextModelList.add(SingleTextModel(
+              singleText: "",
+              topLabelText: "top label $index",
+              bottomLabelText: "bottom label $index")));
   super.initState();
 }
 
-InputBorder getInputBorder() => const OutlineInputBorder(
-  borderSide: BorderSide(
-    color: Colors.green,
-    width: 3,
-  ),
-  borderRadius: BorderRadius.all(
-    Radius.circular(
-      70,
-    ),
-  ),
-);
+InputBorder getInputBorder() =>
+    const OutlineInputBorder(
+      borderSide: BorderSide(
+        color: Colors.green,
+        width: 3,
+      ),
+      borderRadius: BorderRadius.all(
+        Radius.circular(
+          70,
+        ),
+      ),
+    );
 
 @override
 Widget build(BuildContext context) {
@@ -37,7 +42,10 @@ Widget build(BuildContext context) {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SizedBox(
-          height: MediaQuery.of(context).size.height / 3,
+          height: MediaQuery
+              .of(context)
+              .size
+              .height / 3,
         ),
         DynamicSingleTextField(
           singleTextModelList: singleTextModelList,
@@ -49,6 +57,47 @@ Widget build(BuildContext context) {
           disableInputBorder: getInputBorder(),
           focusedInputBorder: getInputBorder(),
           textInputType: TextInputType.number,
+          onChangeSingleText: (String value, int index) {
+            if (kDebugMode) {
+              print("value: $value index: $index");
+            }
+          },
+          onValidationBaseOnLength: () {
+            if (kDebugMode) {
+              print("validated");
+            }
+          },
+        ),
+      ],
+    ),
+  );
+}
+```
+
+![My Image](sample_project/lib/example_screenshots/Screenshot_20230730_181020.png)
+
+```dart
+///other code...
+
+@override
+Widget build(BuildContext context) {
+  return Scaffold(
+    body: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SizedBox(
+          height: MediaQuery
+              .of(context)
+              .size
+              .height / 3,
+        ),
+        DynamicSingleTextField(
+          singleTextModelList: singleTextModelList,
+          showLabelsType: ShowLabelsTypeEnum.show_both_labels_type,
+          inputBorder: getInputBorder(),
+          topLabelMarginBottom: 20,
+          bottomLabelMarginTop: 20,
+          textInputType: TextInputType.text,
           onChangeSingleText: (String value, int index) {
             if (kDebugMode) {
               print("value: $value index: $index");
