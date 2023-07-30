@@ -4,7 +4,7 @@ This library is a dynamic single text field (it is like PIN code but has not PIN
 with top/bottom text label, and
 different customization.
 
-![My Image](sample_project/lib/example_screenshots/Screenshot_20230730_183156.png)
+<a title="simulator_image"><img src="sample_project/lib/example_screenshots/Screenshot_20230730_181020.png" height="300" width="200"></a>
 
 ```dart
 
@@ -74,7 +74,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-![My Image](sample_project/lib/example_screenshots/Screenshot_20230730_181020.png)
+![My Image](sample_project/lib/example_screenshots/Screenshot_20230730_183156.png)
 
 ```dart
 ///other code...
