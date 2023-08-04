@@ -147,7 +147,33 @@ Widget build(BuildContext context) {
 <a title="simulator_image"><img src="sample_project/lib/example_screenshots/Screenshot_20230730_183156.png" height="500" width="200"></a>
 
 ```dart
-///other code...
+
+final List<SingleTextModel> singleTextModelList = [];
+
+@override
+void initState() {
+  List.generate(
+      7,
+          (index) =>
+          singleTextModelList.add(SingleTextModel(
+              singleText: "",
+              topLabelText: "top label $index",
+              bottomLabelText: "bottom label $index")));
+  super.initState();
+}
+
+InputBorder getInputBorder() =>
+    const OutlineInputBorder(
+      borderSide: BorderSide(
+        color: Colors.green,
+        width: 3,
+      ),
+      borderRadius: BorderRadius.all(
+        Radius.circular(
+          70,
+        ),
+      ),
+    );
 
 @override
 Widget build(BuildContext context) {
