@@ -27,8 +27,8 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
     namespace "com.nick.sample_project"
-    compileSdk 33
-    ndkVersion flutter.ndkVersion
+    compileSdk 34
+    ndkVersion '26.1.10909125'
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -49,7 +49,7 @@ android {
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
         minSdkVersion 24
-        targetSdkVersion 33
+        targetSdkVersion 34
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
@@ -61,7 +61,7 @@ android {
             signingConfig signingConfigs.debug
         }
     }
-    buildToolsVersion '33.0.2'
+    buildToolsVersion '34.0.0'
 }
 
 flutter {
