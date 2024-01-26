@@ -1,8 +1,7 @@
 # dynamic_single_text_field
 
 This library is a dynamic single text field (it is like PIN code but has not PIN functionalities)
-with top/bottom text label, and
-different customization.
+with top/bottom text label, and different customizations.
 
 <a title="simulator_image"><img src="sample_project/lib/example_screenshots/Screenshot_20230804_225047.png" height="500" width="200"></a>
 
