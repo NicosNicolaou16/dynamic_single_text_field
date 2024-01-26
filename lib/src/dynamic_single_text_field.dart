@@ -60,7 +60,7 @@ class DynamicSingleTextField extends StatefulWidget {
     this.onChangeSingleText,
     this.onSubmitSingleText,
     this.onValidationBaseOnLength,
-    this.showLabelsType = ShowLabelsTypeEnum.hide_labels_type,
+    this.showLabelsType = ShowLabelsTypeEnum.hideLabelsType,
     this.textStyleTopLabel,
     this.textStyleBottomLabel,
     this.widgetLeftMargin = 20,
@@ -100,15 +100,15 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
           return Column(
             children: [
               if (widget.showLabelsType ==
-                      ShowLabelsTypeEnum.show_top_label_type ||
+                      ShowLabelsTypeEnum.showTopLabelType ||
                   widget.showLabelsType ==
-                      ShowLabelsTypeEnum.show_both_labels_type)
+                      ShowLabelsTypeEnum.showBothLabelsType)
                 _topLabel(singleTextModel),
               _singleTextField(singleTextModel, textEditingController, index),
               if (widget.showLabelsType ==
-                      ShowLabelsTypeEnum.show_bottom_label_type ||
+                      ShowLabelsTypeEnum.showBottomLabelType ||
                   widget.showLabelsType ==
-                      ShowLabelsTypeEnum.show_both_labels_type)
+                      ShowLabelsTypeEnum.showBothLabelsType)
                 _bottomLabel(singleTextModel),
             ],
           );

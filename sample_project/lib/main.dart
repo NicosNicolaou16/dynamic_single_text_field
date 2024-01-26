@@ -70,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           DynamicSingleTextField(
             singleTextModelList: singleTextModelList,
-            showLabelsType: ShowLabelsTypeEnum.show_both_labels_type,
+            showLabelsType: ShowLabelsTypeEnum.showBothLabelsType,
             inputBorder: getInputBorder(),
             topLabelMarginBottom: 20,
             bottomLabelMarginTop: 20,
