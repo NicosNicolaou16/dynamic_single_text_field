@@ -6,7 +6,7 @@ homepage: https://github.com/NicosNicolaou16/dynamic_single_text_field/tree/main
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
-  flutter: ">=1.17.0"
+  flutter: ">=2.12.0"
 
 dependencies:
   flutter:
