@@ -1,7 +1,17 @@
-# dynamic_single_text_field
+## Features
 
 This library is a dynamic single text field (it is like PIN code but has not PIN functionalities)
 with top/bottom text label, and different customizations.
+
+## Getting started
+
+Version Minimum Flutter SDK: 3.0.0
+
+Tested Versioning: <br />
+Flutter SDK version: 3.22.1 <br />
+Dart Version: 3.4.1 <br /> <br />
+
+## Usage
 
 <a title="simulator_image"><img src="sample_project/lib/example_screenshots/Screenshot_20230804_225047.png" height="500" width="200"></a>
 
@@ -209,3 +219,8 @@ Widget build(BuildContext context) {
   );
 }
 ```
+
+## Additional information
+
+Thank you for using my package, any feedback is welcome. You can report any bug, ask a question on package GitHub repository.
+https://github.com/NicosNicolaou16/dynamic_single_text_field/issues
