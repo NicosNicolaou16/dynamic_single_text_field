@@ -13,7 +13,7 @@ Dart Version: 3.4.1 <br /> <br />
 
 ## Usage
 
-<a title="simulator_image"><img src="sample_project/lib/example_screenshots/Screenshot_20230804_225047.png" height="500" width="200"></a>
+<a title="simulator_image"><img src="https://github.com/NicosNicolaou16/dynamic_single_text_field/raw/main/sample_project/lib/example_screenshots/Screenshot_20230804_225047.png" height="500" width="200"></a>
 
 ```dart
 
@@ -83,7 +83,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-<a title="simulator_image"><img src="sample_project/lib/example_screenshots/Screenshot_20230730_181020.png" height="500" width="200"></a>
+<a title="simulator_image"><img src="https://github.com/NicosNicolaou16/dynamic_single_text_field/raw/main/sample_project/lib/example_screenshots/Screenshot_20230730_181020.png" height="500" width="200"></a>
 
 ```dart
 
@@ -153,7 +153,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-<a title="simulator_image"><img src="sample_project/lib/example_screenshots/Screenshot_20230730_183156.png" height="500" width="200"></a>
+<a title="simulator_image"><img src="https://github.com/NicosNicolaou16/dynamic_single_text_field/raw/main/sample_project/lib/example_screenshots/Screenshot_20230730_183156.png" height="500" width="200"></a>
 
 ```dart
 
