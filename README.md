@@ -15,7 +15,7 @@ Dart Version: 3.4.3 <br /> <br />
 
 | Parameters                 | Description                                                                                                                             |
 |----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
-| `singleTextModelList`      | the list of text                                                                                                                        |
+| `singleTextModelList`      | the list of single text                                                                                                                 |
 | `scrollPhysics`            | scroll physics                                                                                                                          |
 | `scrollController`         | scroll controller                                                                                                                       |
 | `singleTextHeight`         | single text height                                                                                                                      |
