@@ -8,8 +8,8 @@ with top/bottom text label, and different customizations.
 Version Minimum Flutter SDK: 3.0.0
 
 Tested Versioning: <br />
-Flutter SDK version: 3.22.1 <br />
-Dart Version: 3.4.1 <br /> <br />
+Flutter SDK version: 3.22.2 <br />
+Dart Version: 3.4.3 <br /> <br />
 
 ## Usage
 
