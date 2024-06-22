@@ -4,40 +4,84 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class DynamicSingleTextField extends StatefulWidget {
-  ///ListView
-  final List<SingleTextModel> singleTextModelList;
-  ScrollPhysics? scrollPhysics;
-  ScrollController? scrollController;
+  ///ListView Section
 
-  ///Single Text
-  double singleTextHeight;
-  double singleTextWidth;
-  TextStyle? textFieldTextStyle;
-  String singleHintText;
-  TextStyle? singleHintTextStyle;
-  InputBorder? inputBorder;
-  InputBorder? enableInputBorder;
-  InputBorder? disableInputBorder;
-  InputBorder? focusedInputBorder;
-  TextInputType? textInputType;
-  Color cursorColor;
-  bool isReadOnly;
-  bool isObscureText;
-  String obscuringCharacter;
-  Color? singleTextFillColor;
-  Function? onChangeSingleText;
-  Function? onSubmitSingleText;
-  Function? onValidationBaseOnLength;
+  /// This parameter is the list of model for single text
+  final List<SingleTextModel> singleTextModelList;
+
+  /// This parameter is the option to set scroll physics on ListView
+  final ScrollPhysics? scrollPhysics;
+
+  ///  This parameter is the option to set the scroll controller for the ListView
+  final ScrollController? scrollController;
+
+  ///Single Text Section
+
+  /// This parameter is the option to set the height for the single texts
+  final double singleTextHeight;
+
+  /// This parameter is the option to set the width for the single texts
+  final double singleTextWidth;
+
+  /// This parameter is the option to set the single texts style
+  final TextStyle? textFieldTextStyle;
+
+  /// This parameter is the option to set the hint for the single texts
+  final String singleHintText;
+
+  /// This parameter is the option to set the hint for single text style
+  final TextStyle? singleHintTextStyle;
+
+  /// This parameter is the option to set the input border for single texts
+  final InputBorder? inputBorder;
+
+  /// This parameter is the option to set the enable border for single texts
+  final InputBorder? enableInputBorder;
+
+  /// This parameter is the option to set the disable border for single texts
+  final InputBorder? disableInputBorder;
+
+  /// This parameter is the option to set the focused border for single texts
+  final InputBorder? focusedInputBorder;
+
+  /// This parameter is the option to set the input type for single texts
+  final TextInputType? textInputType;
+
+  /// This parameter is the option to set the cursor color for single texts
+  final Color cursorColor;
+
+  /// This parameter is the option to set if the single texts is read only
+  final bool isReadOnly;
+
+  /// This parameter is the option to set if the single texts is obscure
+  final bool isObscureText;
+
+  /// This parameter is the option to set the obscuring character for single texts
+  final String obscuringCharacter;
+
+  /// This parameter is the option to set the fill color for single texts
+  final Color? singleTextFillColor;
+
+  /// listeners - call backs
+
+  /// This parameter is the call back to get the character during the typing (real time)
+  final Function? onChangeSingleText;
+
+  /// This parameter is the call back to get the character when press the done/return button from the keyboard
+  final Function? onSubmitSingleText;
+
+  /// This parameter is the call back to validate the characters based on the length
+  final Function? onValidationBaseOnLength;
 
   ///Labels
-  ShowLabelsTypeEnum showLabelsType;
-  TextStyle? textStyleTopLabel;
-  TextStyle? textStyleBottomLabel;
-  double widgetLeftMargin;
-  double topLabelMarginBottom;
-  double bottomLabelMarginTop;
+  final ShowLabelsTypeEnum showLabelsType;
+  final TextStyle? textStyleTopLabel;
+  final TextStyle? textStyleBottomLabel;
+  final double widgetLeftMargin;
+  final double topLabelMarginBottom;
+  final double bottomLabelMarginTop;
 
-  DynamicSingleTextField({
+  const DynamicSingleTextField({
     super.key,
     required this.singleTextModelList,
     this.scrollPhysics,
