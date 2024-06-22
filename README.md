@@ -13,35 +13,35 @@ Dart Version: 3.4.3 <br /> <br />
 
 ## Usage
 
-| Parameters                 | Description                                                                                                                             |
-|----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
-| `singleTextModelList`      | the list of single text                                                                                                                 |
-| `scrollPhysics`            | scroll physics                                                                                                                          |
-| `scrollController`         | scroll controller                                                                                                                       |
-| `singleTextHeight`         | single text height                                                                                                                      |
-| `singleTextWidth`          | single text width                                                                                                                       |
-| `textFieldTextStyle`       | single text style                                                                                                                       |
-| `singleHintText`           | single hint text                                                                                                                        |
-| `singleHintTextStyle`      | single hint text style                                                                                                                  |
-| `inputBorder`              | input border                                                                                                                            |
-| `enableInputBorder`        | enable input border                                                                                                                     |
-| `disableInputBorder`       | disable input border                                                                                                                    |
-| `focusedInputBorder`       | focused input border                                                                                                                    |
-| `textInputType`            | text input type                                                                                                                         |
-| `cursorColor`              | cursor color                                                                                                                            |
-| `isReadOnly`               | set if the text is read only                                                                                                            |
-| `isObscureText`            | apply for passwords - enable/disable obscure                                                                                            |
-| `obscuringCharacter`       | character for obscure text                                                                                                              |
-| `singleTextFillColor`      | fill color of the text                                                                                                                  |
-| `onChangeSingleText`       | call back for change text (Listener)                                                                                                    |
-| `onSubmitSingleText`       | call back for submitted text (Listener)                                                                                                 |
-| `onValidationBaseOnLength` | length validation                                                                                                                       |
-| `showLabelsType`           | label types to show the text for showTopLabelType, showBottomLabelType,showBothLabelsType, hideLabelsType default value: hideLabelsType |
-| `textStyleTopLabel`        | style of the top text                                                                                                                   |
-| `textStyleBottomLabel`     | style of the bottom text                                                                                                                |
-| `widgetLeftMargin`         | margin left for the widget                                                                                                              |
-| `topLabelMarginBottom`     | margin left for the top label                                                                                                           |
-| `bottomLabelMarginTop`     | margin left for the bottom label                                                                                                        |
+| Parameters                 | Description                                                                                                                              |
+|----------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| `singleTextModelList`      | the list of single text                                                                                                                  |
+| `scrollPhysics`            | scroll physics                                                                                                                           |
+| `scrollController`         | scroll controller                                                                                                                        |
+| `singleTextHeight`         | single text height                                                                                                                       |
+| `singleTextWidth`          | single text width                                                                                                                        |
+| `textFieldTextStyle`       | single text style                                                                                                                        |
+| `singleHintText`           | single hint text                                                                                                                         |
+| `singleHintTextStyle`      | single hint text style                                                                                                                   |
+| `inputBorder`              | input border                                                                                                                             |
+| `enableInputBorder`        | enable input border                                                                                                                      |
+| `disableInputBorder`       | disable input border                                                                                                                     |
+| `focusedInputBorder`       | focused input border                                                                                                                     |
+| `textInputType`            | text input type                                                                                                                          |
+| `cursorColor`              | cursor color                                                                                                                             |
+| `isReadOnly`               | set if the text is read only                                                                                                             |
+| `isObscureText`            | apply for passwords - enable/disable obscure                                                                                             |
+| `obscuringCharacter`       | character for obscure text                                                                                                               |
+| `singleTextFillColor`      | fill color of the text                                                                                                                   |
+| `onChangeSingleText`       | call back for change text (Listener)                                                                                                     |
+| `onSubmitSingleText`       | call back for submitted text (Listener)                                                                                                  |
+| `onValidationBaseOnLength` | length validation                                                                                                                        |
+| `showLabelsType`           | label types to show the text for showTopLabelType, showBottomLabelType, showBothLabelsType, hideLabelsType default value: hideLabelsType |
+| `textStyleTopLabel`        | style of the top text                                                                                                                    |
+| `textStyleBottomLabel`     | style of the bottom text                                                                                                                 |
+| `widgetLeftMargin`         | margin left for the widget                                                                                                               |
+| `topLabelMarginBottom`     | margin left for the top label                                                                                                            |
+| `bottomLabelMarginTop`     | margin left for the bottom label                                                                                                         |
 
 <a title="simulator_image"><img src="https://github.com/NicosNicolaou16/dynamic_single_text_field/raw/main/sample_project/lib/example_screenshots/Screenshot_20230804_225047.png" height="500" width="200"></a>
 

@@ -17,10 +17,10 @@ class DynamicSingleTextField extends StatefulWidget {
 
   ///Single Text Section
 
-  /// This parameter is the option to set the height for the single texts
+  /// This parameter is the option to set the height for the single texts, with default value 70
   final double singleTextHeight;
 
-  /// This parameter is the option to set the width for the single texts
+  /// This parameter is the option to set the width for the single texts, with default value 70
   final double singleTextWidth;
 
   /// This parameter is the option to set the single texts style
@@ -44,19 +44,19 @@ class DynamicSingleTextField extends StatefulWidget {
   /// This parameter is the option to set the focused border for single texts
   final InputBorder? focusedInputBorder;
 
-  /// This parameter is the option to set the input type for single texts
+  /// This parameter is the option to set the input type for single texts, with default value text
   final TextInputType? textInputType;
 
-  /// This parameter is the option to set the cursor color for single texts
+  /// This parameter is the option to set the cursor color for single texts, with default value black
   final Color cursorColor;
 
-  /// This parameter is the option to set if the single texts is read only
+  /// This parameter is the option to set if the single texts is read only, with default value false
   final bool isReadOnly;
 
-  /// This parameter is the option to set if the single texts is obscure
+  /// This parameter is the option to set if the single texts is obscure, with default value false
   final bool isObscureText;
 
-  /// This parameter is the option to set the obscuring character for single texts
+  /// This parameter is the option to set the obscuring character for single texts, with default value •
   final String obscuringCharacter;
 
   /// This parameter is the option to set the fill color for single texts
@@ -73,12 +73,24 @@ class DynamicSingleTextField extends StatefulWidget {
   /// This parameter is the call back to validate the characters based on the length
   final Function? onValidationBaseOnLength;
 
-  ///Labels
+  ///Labels Section
+
+  /// This parameter is the enum class to set if need label on top or bottom or both, showBottomLabelType, showBothLabelsType, hideLabelsType default value: hideLabelsType
   final ShowLabelsTypeEnum showLabelsType;
+
+  /// This parameter is the top label text style
   final TextStyle? textStyleTopLabel;
+
+  /// This parameter is the bottom label text style
   final TextStyle? textStyleBottomLabel;
+
+  /// This parameter is the single texts left margin, with default value 20
   final double widgetLeftMargin;
+
+  /// This parameter is the top label text margin bottom, with default value 0
   final double topLabelMarginBottom;
+
+  /// This parameter is the bottom label text margin top, with default value 0
   final double bottomLabelMarginTop;
 
   const DynamicSingleTextField({
