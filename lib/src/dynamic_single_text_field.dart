@@ -9,7 +9,7 @@ class DynamicSingleTextField extends StatefulWidget {
   /// This parameter is the list of model for single text
   final List<SingleTextModel> singleTextModelList;
 
-  /// This parameter is the option to set scroll physics on ListView
+  /// This parameter is the option to set scroll physics for the ListView
   final ScrollPhysics? scrollPhysics;
 
   ///  This parameter is the option to set the scroll controller for the ListView
