@@ -1,7 +1,7 @@
 ## 0.0.1+3
 
 What's new:
-- Fix the example screenshots
+- Fix the example screenshots.
 
 ## 0.0.1+2
 
