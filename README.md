@@ -1,6 +1,6 @@
 ## Features
 
-This library is a dynamic single text field (it is like PIN code but has not PIN functionalities)
+This library is a dynamic single text field (it is like PIN/OTP code view but has not PIN/OTP functionalities)
 with top/bottom text label, and different customizations.
 
 ## Getting started
@@ -18,8 +18,8 @@ Dart Version: 3.4.3 <br /> <br />
 | `singleTextModelList`      | the list of model for single text. Important Note: Use this model to insert data into dynamic single text: `SingleTextModel({this.singleText = "", this.topLabelText, this.bottomLabelText});` |
 | `scrollPhysics`            | scroll physics for the ListView                                                                                                                                                                |
 | `scrollController`         | scroll controller for the ListView                                                                                                                                                             |
-| `singleTextHeight`         | the height for the single texts, with default value 70                                                                                                                                         |
-| `singleTextWidth`          | the width for the single texts, with default value 70                                                                                                                                          |
+| `singleTextHeight`         | the height for the single texts, with default value `70`                                                                                                                                       |
+| `singleTextWidth`          | the width for the single texts, with default value `70`                                                                                                                                        |
 | `textFieldTextStyle`       | single text style                                                                                                                                                                              |
 | `singleHintText`           | single hint text                                                                                                                                                                               |
 | `singleHintTextStyle`      | single hint text style                                                                                                                                                                         |
@@ -31,7 +31,7 @@ Dart Version: 3.4.3 <br /> <br />
 | `cursorColor`              | the cursor color for single texts, with default value black                                                                                                                                    |
 | `isReadOnly`               | if the single texts is read only, with default value false                                                                                                                                     |
 | `isObscureText`            | the single texts is obscure, with default value false                                                                                                                                          |
-| `obscuringCharacter`       | the obscuring character for single texts, with default value •                                                                                                                                 |
+| `obscuringCharacter`       | the obscuring character for single texts, with default value `•`                                                                                                                               |
 | `singleTextFillColor`      | the fill color for single texts                                                                                                                                                                |
 | `onChangeSingleText`       | the call back to get the character during the typing (real time)                                                                                                                               |
 | `onSubmitSingleText`       | the call back to get the character when press the done/return button from the keyboard                                                                                                         |
@@ -39,9 +39,9 @@ Dart Version: 3.4.3 <br /> <br />
 | `showLabelsType`           | label types to show the text for `showTopLabelType`, `showBottomLabelType`, `showBothLabelsType`, `hideLabelsType` default value: `hideLabelsType`                                             |
 | `textStyleTopLabel`        | the top label text style                                                                                                                                                                       |
 | `textStyleBottomLabel`     | the bottom label text style                                                                                                                                                                    |
-| `widgetLeftMargin`         | the single texts left margin, with default value 20                                                                                                                                            |
-| `topLabelMarginBottom`     | the top label text margin bottom, with default value 0                                                                                                                                         |
-| `bottomLabelMarginTop`     | the bottom label text margin top, with default value 0                                                                                                                                         |
+| `widgetLeftMargin`         | the single texts left margin, with default value `20`                                                                                                                                          |
+| `topLabelMarginBottom`     | margin bottom for top label text, with default value `0`                                                                                                                                       |
+| `bottomLabelMarginTop`     | margin top for bottom label text, with default value `0`                                                                                                                                       |
 
 <p align="left">
 <a title="simulator_image"><img src="https://github.com/NicosNicolaou16/dynamic_single_text_field/raw/main/sample_project/lib/example_screenshots/Screenshot_20240712_220940.png" height="500" width="200"></a>
