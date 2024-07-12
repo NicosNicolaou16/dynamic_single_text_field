@@ -1,4 +1,4 @@
-import 'package:dynamic_single_text_field/src/models/show_labels_type_enum.dart';
+import 'package:dynamic_single_text_field/src/enums/show_labels_type_enum.dart';
 import 'package:dynamic_single_text_field/src/models/single_text_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

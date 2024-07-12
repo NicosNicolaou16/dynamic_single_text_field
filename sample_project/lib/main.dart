@@ -33,13 +33,26 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<SingleTextModel> singleTextModelList = [];
+  final List<SingleTextModel> singleTextModelList1 = [];
+  final List<SingleTextModel> singleTextModelList2 = [];
+  final List<SingleTextModel> singleTextModelList3 = [];
 
   @override
   void initState() {
     List.generate(
         7,
-        (index) => singleTextModelList.add(SingleTextModel(
+        (index) => singleTextModelList1.add(SingleTextModel(
+              singleText: "",
+            )));
+    List.generate(
+        7,
+        (index) => singleTextModelList2.add(SingleTextModel(
+            singleText: "",
+            topLabelText: "top label $index",
+            bottomLabelText: "bottom label $index")));
+    List.generate(
+        7,
+        (index) => singleTextModelList3.add(SingleTextModel(
             singleText: "",
             topLabelText: "top label $index",
             bottomLabelText: "bottom label $index")));
@@ -64,11 +77,32 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(
-            height: MediaQuery.of(context).size.height / 3,
+          const SizedBox(
+            height: 100,
           ),
           DynamicSingleTextField(
-            singleTextModelList: singleTextModelList,
+            singleTextModelList: singleTextModelList1,
+            showLabelsType: ShowLabelsTypeEnum.hideLabelsType,
+            inputBorder: getInputBorder(),
+            topLabelMarginBottom: 20,
+            bottomLabelMarginTop: 20,
+            enableInputBorder: getInputBorder(),
+            disableInputBorder: getInputBorder(),
+            focusedInputBorder: getInputBorder(),
+            textInputType: TextInputType.number,
+            onChangeSingleText: (String value, int index) {
+              if (kDebugMode) {
+                print("value: $value index: $index");
+              }
+            },
+            onValidationBaseOnLength: () {
+              if (kDebugMode) {
+                print("validated");
+              }
+            },
+          ),
+          DynamicSingleTextField(
+            singleTextModelList: singleTextModelList2,
             showLabelsType: ShowLabelsTypeEnum.showBothLabelsType,
             inputBorder: getInputBorder(),
             topLabelMarginBottom: 20,
@@ -77,6 +111,24 @@ class _MyHomePageState extends State<MyHomePage> {
             disableInputBorder: getInputBorder(),
             focusedInputBorder: getInputBorder(),
             textInputType: TextInputType.number,
+            onChangeSingleText: (String value, int index) {
+              if (kDebugMode) {
+                print("value: $value index: $index");
+              }
+            },
+            onValidationBaseOnLength: () {
+              if (kDebugMode) {
+                print("validated");
+              }
+            },
+          ),
+          DynamicSingleTextField(
+            singleTextModelList: singleTextModelList3,
+            showLabelsType: ShowLabelsTypeEnum.showBothLabelsType,
+            inputBorder: getInputBorder(),
+            topLabelMarginBottom: 20,
+            bottomLabelMarginTop: 20,
+            textInputType: TextInputType.text,
             onChangeSingleText: (String value, int index) {
               if (kDebugMode) {
                 print("value: $value index: $index");

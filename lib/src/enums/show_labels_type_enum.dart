@@ -10,5 +10,5 @@ enum ShowLabelsTypeEnum {
   showBothLabelsType,
 
   /// Disable both text label, this is the default value
-  hideLabelsType
+  hideLabelsType,
 }
