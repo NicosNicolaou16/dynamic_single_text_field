@@ -3,6 +3,7 @@ import 'package:dynamic_single_text_field/src/models/single_text_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+/// This class is the Dynamic Single Text Field and provide to developer different customizations
 class DynamicSingleTextField extends StatefulWidget {
   ///ListView Section
 
