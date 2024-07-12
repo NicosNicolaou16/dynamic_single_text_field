@@ -1,3 +1,13 @@
+## 0.0.1+2
+
+What's new:
+- Fix the ChangeLog.
+- Fix a warning.
+
+## 0.0.1+1
+
+* Fix the Example project.
+
 ## 0.0.1
 
 * initial release.
