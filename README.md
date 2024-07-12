@@ -43,211 +43,165 @@ Dart Version: 3.4.3 <br /> <br />
 | `topLabelMarginBottom`     | the top label text margin bottom, with default value 0                                                                                                                         |
 | `bottomLabelMarginTop`     | the bottom label text margin top, with default value 0                                                                                                                         |
 
+<p align="left">
 <a title="simulator_image"><img src="https://github.com/NicosNicolaou16/dynamic_single_text_field/raw/main/sample_project/lib/example_screenshots/Screenshot_20230804_225047.png" height="500" width="200"></a>
-
-```dart
-
-final List<SingleTextModel> singleTextModelList = [];
-
-@override
-void initState() {
-  List.generate(
-      7,
-          (index) =>
-          singleTextModelList.add(SingleTextModel(
-              singleText: "",
-              topLabelText: "top label $index",
-              bottomLabelText: "bottom label $index")));
-  super.initState();
-}
-
-InputBorder getInputBorder() =>
-    const OutlineInputBorder(
-      borderSide: BorderSide(
-        color: Colors.green,
-        width: 3,
-      ),
-      borderRadius: BorderRadius.all(
-        Radius.circular(
-          70,
-        ),
-      ),
-    );
-
-@override
-Widget build(BuildContext context) {
-  return Scaffold(
-    body: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        SizedBox(
-          height: MediaQuery
-              .of(context)
-              .size
-              .height / 3,
-        ),
-        DynamicSingleTextField(
-          singleTextModelList: singleTextModelList,
-          showLabelsType: ShowLabelsTypeEnum.hide_labels_type,
-          inputBorder: getInputBorder(),
-          topLabelMarginBottom: 20,
-          bottomLabelMarginTop: 20,
-          enableInputBorder: getInputBorder(),
-          disableInputBorder: getInputBorder(),
-          focusedInputBorder: getInputBorder(),
-          textInputType: TextInputType.number,
-          onChangeSingleText: (String value, int index) {
-            if (kDebugMode) {
-              print("value: $value index: $index");
-            }
-          },
-          onValidationBaseOnLength: () {
-            if (kDebugMode) {
-              print("validated");
-            }
-          },
-        ),
-      ],
-    ),
-  );
-}
-```
-
 <a title="simulator_image"><img src="https://github.com/NicosNicolaou16/dynamic_single_text_field/raw/main/sample_project/lib/example_screenshots/Screenshot_20230730_181020.png" height="500" width="200"></a>
-
-```dart
-
-final List<SingleTextModel> singleTextModelList = [];
-
-@override
-void initState() {
-  List.generate(
-      7,
-          (index) =>
-          singleTextModelList.add(SingleTextModel(
-              singleText: "",
-              topLabelText: "top label $index",
-              bottomLabelText: "bottom label $index")));
-  super.initState();
-}
-
-InputBorder getInputBorder() =>
-    const OutlineInputBorder(
-      borderSide: BorderSide(
-        color: Colors.green,
-        width: 3,
-      ),
-      borderRadius: BorderRadius.all(
-        Radius.circular(
-          70,
-        ),
-      ),
-    );
-
-@override
-Widget build(BuildContext context) {
-  return Scaffold(
-    body: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        SizedBox(
-          height: MediaQuery
-              .of(context)
-              .size
-              .height / 3,
-        ),
-        DynamicSingleTextField(
-          singleTextModelList: singleTextModelList,
-          showLabelsType: ShowLabelsTypeEnum.show_both_labels_type,
-          inputBorder: getInputBorder(),
-          topLabelMarginBottom: 20,
-          bottomLabelMarginTop: 20,
-          enableInputBorder: getInputBorder(),
-          disableInputBorder: getInputBorder(),
-          focusedInputBorder: getInputBorder(),
-          textInputType: TextInputType.number,
-          onChangeSingleText: (String value, int index) {
-            if (kDebugMode) {
-              print("value: $value index: $index");
-            }
-          },
-          onValidationBaseOnLength: () {
-            if (kDebugMode) {
-              print("validated");
-            }
-          },
-        ),
-      ],
-    ),
-  );
-}
-```
-
 <a title="simulator_image"><img src="https://github.com/NicosNicolaou16/dynamic_single_text_field/raw/main/sample_project/lib/example_screenshots/Screenshot_20230730_183156.png" height="500" width="200"></a>
+</p>
 
 ```dart
+import 'package:dynamic_single_text_field/dynamic_single_text_field.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
-final List<SingleTextModel> singleTextModelList = [];
-
-@override
-void initState() {
-  List.generate(
-      7,
-          (index) =>
-          singleTextModelList.add(SingleTextModel(
-              singleText: "",
-              topLabelText: "top label $index",
-              bottomLabelText: "bottom label $index")));
-  super.initState();
+void main() {
+  runApp(const MyApp());
 }
 
-InputBorder getInputBorder() =>
-    const OutlineInputBorder(
-      borderSide: BorderSide(
-        color: Colors.green,
-        width: 3,
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Sample Project',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
       ),
-      borderRadius: BorderRadius.all(
-        Radius.circular(
-          70,
+      home: const MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({
+    super.key,
+  });
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  final List<SingleTextModel> singleTextModelList1 = [];
+  final List<SingleTextModel> singleTextModelList2 = [];
+  final List<SingleTextModel> singleTextModelList3 = [];
+
+  @override
+  void initState() {
+    List.generate(
+        7,
+            (index) =>
+            singleTextModelList1.add(SingleTextModel(
+              singleText: "",
+            )));
+    List.generate(
+        7,
+            (index) =>
+            singleTextModelList2.add(SingleTextModel(
+                singleText: "",
+                topLabelText: "top label $index",
+                bottomLabelText: "bottom label $index")));
+    List.generate(
+        7,
+            (index) =>
+            singleTextModelList3.add(SingleTextModel(
+                singleText: "",
+                topLabelText: "top label $index",
+                bottomLabelText: "bottom label $index")));
+    super.initState();
+  }
+
+  InputBorder getInputBorder() =>
+      const OutlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.green,
+          width: 3,
         ),
+        borderRadius: BorderRadius.all(
+          Radius.circular(
+            70,
+          ),
+        ),
+      );
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const SizedBox(
+            height: 100,
+          ),
+          DynamicSingleTextField(
+            singleTextModelList: singleTextModelList1,
+            showLabelsType: ShowLabelsTypeEnum.hideLabelsType,
+            inputBorder: getInputBorder(),
+            topLabelMarginBottom: 20,
+            bottomLabelMarginTop: 20,
+            enableInputBorder: getInputBorder(),
+            disableInputBorder: getInputBorder(),
+            focusedInputBorder: getInputBorder(),
+            textInputType: TextInputType.number,
+            onChangeSingleText: (String value, int index) {
+              if (kDebugMode) {
+                print("value: $value index: $index");
+              }
+            },
+            onValidationBaseOnLength: () {
+              if (kDebugMode) {
+                print("validated");
+              }
+            },
+          ),
+          DynamicSingleTextField(
+            singleTextModelList: singleTextModelList2,
+            showLabelsType: ShowLabelsTypeEnum.showBothLabelsType,
+            inputBorder: getInputBorder(),
+            topLabelMarginBottom: 20,
+            bottomLabelMarginTop: 20,
+            enableInputBorder: getInputBorder(),
+            disableInputBorder: getInputBorder(),
+            focusedInputBorder: getInputBorder(),
+            textInputType: TextInputType.number,
+            onChangeSingleText: (String value, int index) {
+              if (kDebugMode) {
+                print("value: $value index: $index");
+              }
+            },
+            onValidationBaseOnLength: () {
+              if (kDebugMode) {
+                print("validated");
+              }
+            },
+          ),
+          DynamicSingleTextField(
+            singleTextModelList: singleTextModelList3,
+            showLabelsType: ShowLabelsTypeEnum.showBothLabelsType,
+            inputBorder: getInputBorder(),
+            topLabelMarginBottom: 20,
+            bottomLabelMarginTop: 20,
+            textInputType: TextInputType.text,
+            onChangeSingleText: (String value, int index) {
+              if (kDebugMode) {
+                print("value: $value index: $index");
+              }
+            },
+            onValidationBaseOnLength: () {
+              if (kDebugMode) {
+                print("validated");
+              }
+            },
+          ),
+        ],
       ),
     );
-
-@override
-Widget build(BuildContext context) {
-  return Scaffold(
-    body: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        SizedBox(
-          height: MediaQuery
-              .of(context)
-              .size
-              .height / 3,
-        ),
-        DynamicSingleTextField(
-          singleTextModelList: singleTextModelList,
-          showLabelsType: ShowLabelsTypeEnum.show_both_labels_type,
-          inputBorder: getInputBorder(),
-          topLabelMarginBottom: 20,
-          bottomLabelMarginTop: 20,
-          textInputType: TextInputType.text,
-          onChangeSingleText: (String value, int index) {
-            if (kDebugMode) {
-              print("value: $value index: $index");
-            }
-          },
-          onValidationBaseOnLength: () {
-            if (kDebugMode) {
-              print("validated");
-            }
-          },
-        ),
-      ],
-    ),
-  );
+  }
 }
+
 ```
 
 ## Additional information
