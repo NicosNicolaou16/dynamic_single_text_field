@@ -76,7 +76,7 @@ class DynamicSingleTextField extends StatefulWidget {
 
   ///Labels Section
 
-  /// This parameter is the enum class to set if need label on top or bottom or both, showBottomLabelType, showBothLabelsType, hideLabelsType default value: hideLabelsType
+  /// This parameter is the enum class to set if need label on top or bottom or both, `showBottomLabelType`, `showBothLabelsType`, `hideLabelsType` default value: `hideLabelsType`
   final ShowLabelsTypeEnum showLabelsType;
 
   /// This parameter is the top label text style

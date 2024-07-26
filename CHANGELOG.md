@@ -1,3 +1,8 @@
+## 0.0.2
+
+What's new:
+- Updated the README file and improve the documentation.
+
 ## 0.0.1+3
 
 What's new:
