@@ -1,6 +1,7 @@
 ## Features
 
-This library is a dynamic single text field (it is like PIN/OTP code view but has not PIN/OTP functionalities)
+This package is a dynamic single text field (it is like PIN/OTP code view but has not PIN/OTP
+functionalities)
 with top/bottom text label, and different customizations.
 
 ## Getting started
@@ -13,35 +14,35 @@ Dart Version: 3.4.3 <br /> <br />
 
 ## Usage
 
-| Parameters                 | Description                                                                                                                                                                                    |
-|----------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `singleTextModelList`      | the list of model for single text. Important Note: Use this model to insert data into dynamic single text: `SingleTextModel({this.singleText = "", this.topLabelText, this.bottomLabelText});` |
-| `scrollPhysics`            | scroll physics for the ListView                                                                                                                                                                |
-| `scrollController`         | scroll controller for the ListView                                                                                                                                                             |
-| `singleTextHeight`         | the height for the single texts, with default value `70`                                                                                                                                       |
-| `singleTextWidth`          | the width for the single texts, with default value `70`                                                                                                                                        |
-| `textFieldTextStyle`       | single text style                                                                                                                                                                              |
-| `singleHintText`           | single hint text                                                                                                                                                                               |
-| `singleHintTextStyle`      | single hint text style                                                                                                                                                                         |
-| `inputBorder`              | input border for single texts                                                                                                                                                                  |
-| `enableInputBorder`        | enable border for single texts                                                                                                                                                                 |
-| `disableInputBorder`       | disable border for single texts                                                                                                                                                                |
-| `focusedInputBorder`       | focused border for single texts                                                                                                                                                                |
-| `textInputType`            | the input type for single texts, with default value text                                                                                                                                       |
-| `cursorColor`              | the cursor color for single texts, with default value black                                                                                                                                    |
-| `isReadOnly`               | if the single texts is read only, with default value false                                                                                                                                     |
-| `isObscureText`            | the single texts is obscure, with default value false                                                                                                                                          |
-| `obscuringCharacter`       | the obscuring character for single texts, with default value `•`                                                                                                                               |
-| `singleTextFillColor`      | the fill color for single texts                                                                                                                                                                |
-| `onChangeSingleText`       | the call back to get the character during the typing (real time)                                                                                                                               |
-| `onSubmitSingleText`       | the call back to get the character when press the done/return button from the keyboard                                                                                                         |
-| `onValidationBaseOnLength` | the call back to validate the characters based on the length                                                                                                                                   |
-| `showLabelsType`           | label types to show the text for `showTopLabelType`, `showBottomLabelType`, `showBothLabelsType`, `hideLabelsType` default value: `hideLabelsType`                                             |
-| `textStyleTopLabel`        | the top label text style                                                                                                                                                                       |
-| `textStyleBottomLabel`     | the bottom label text style                                                                                                                                                                    |
-| `widgetLeftMargin`         | the single texts left margin, with default value `20`                                                                                                                                          |
-| `topLabelMarginBottom`     | margin bottom for top label text, with default value `0`                                                                                                                                       |
-| `bottomLabelMarginTop`     | margin top for bottom label text, with default value `0`                                                                                                                                       |
+| Parameters                 | Description                                                                                                                                                                                                      |
+|----------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `singleTextModelList`      | This parameter is the list of model for single text. Important Note: Use this model to insert data into dynamic single text: `SingleTextModel({this.singleText = "", this.topLabelText, this.bottomLabelText});` |
+| `scrollPhysics`            | This parameter is the option to set scroll physics for the ListView                                                                                                                                              |
+| `scrollController`         | This parameter is the option to set the scroll controller for the ListView                                                                                                                                       |
+| `singleTextHeight`         | This parameter is the option to set the height for the single texts, with default value 70                                                                                                                       |
+| `singleTextWidth`          | This parameter is the option to set the width for the single texts, with default value 70                                                                                                                        |
+| `textFieldTextStyle`       | This parameter is the option to set the single texts style                                                                                                                                                       |
+| `singleHintText`           | This parameter is the option to set the hint for the single texts                                                                                                                                                |
+| `singleHintTextStyle`      | This parameter is the option to set the hint for single text style                                                                                                                                               |
+| `inputBorder`              | This parameter is the option to set the input border for single texts                                                                                                                                            |
+| `enableInputBorder`        | This parameter is the option to set the enable border for single texts                                                                                                                                           |
+| `disableInputBorder`       | This parameter is the option to set the disable border for single texts                                                                                                                                          |
+| `focusedInputBorder`       | This parameter is the option to set the focused border for single texts                                                                                                                                          |
+| `textInputType`            | This parameter is the option to set the input type for single texts, with default value text                                                                                                                     |
+| `cursorColor`              | This parameter is the option to set the cursor color for single texts, with default value black                                                                                                                  |
+| `isReadOnly`               | This parameter is the option to set if the single texts is read only, with default value false                                                                                                                   |
+| `isObscureText`            | This parameter is the option to set if the single texts is obscure, with default value false                                                                                                                     |
+| `obscuringCharacter`       | This parameter is the option to set the obscuring character for single texts, with default value •                                                                                                               |
+| `singleTextFillColor`      | This parameter is the option to set the fill color for single texts                                                                                                                                              |
+| `onChangeSingleText`       | This parameter is the call back to get the character during the typing (real time)                                                                                                                               |
+| `onSubmitSingleText`       | This parameter is the call back to get the character when press the done/return button from the keyboard                                                                                                         |
+| `onValidationBaseOnLength` | This parameter is the call back to validate the characters based on the length                                                                                                                                   |
+| `showLabelsType`           | This parameter is the enum class to set if need label on top or bottom or both, `showBottomLabelType`, `showBothLabelsType`, `hideLabelsType` default value: `hideLabelsType`                                    |
+| `textStyleTopLabel`        | This parameter is the top label text style                                                                                                                                                                       |
+| `textStyleBottomLabel`     | This parameter is the bottom label text style                                                                                                                                                                    |
+| `widgetLeftMargin`         | This parameter is the single texts left margin, with default value 20                                                                                                                                            |
+| `topLabelMarginBottom`     | This parameter is the top label text margin bottom, with default value 0                                                                                                                                         |
+| `bottomLabelMarginTop`     | This parameter is the bottom label text margin top, with default value 0                                                                                                                                         |
 
 <p align="left">
 <a title="simulator_image"><img src="https://github.com/NicosNicolaou16/dynamic_single_text_field/raw/main/screenshots/Screenshot_20240712_220940.png" height="500" width="200"></a>
