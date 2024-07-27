@@ -1,3 +1,9 @@
+## 0.0.2+1
+
+What's new:
+- Updated the README file and improve the documentation.
+- Updated Flutter SDK for example project.
+
 ## 0.0.2
 
 What's new:

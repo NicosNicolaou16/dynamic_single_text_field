@@ -1,6 +1,6 @@
 name: dynamic_single_text_field
 description: "This package provide you dynamic single text field with custom design."
-version: 0.0.2
+version: 0.0.2+1
 homepage: https://github.com/NicosNicolaou16/dynamic_single_text_field/tree/main
 
 environment:
