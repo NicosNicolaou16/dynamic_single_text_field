@@ -16,7 +16,7 @@ class DynamicSingleTextField extends StatefulWidget {
   ///  This parameter is the option to set the scroll controller for the ListView
   final ScrollController? scrollController;
 
-  ///  This parameter is the option to set the height of the dynamic ListView
+  ///  This parameter is the option to set the height of the dynamic ListView, with default value 150
   final double singleDynamicListHeight;
 
   ///Single Text Section
