@@ -68,11 +68,11 @@ class DynamicSingleTextField extends StatefulWidget {
 
   /// listeners - call backs
 
-  /// This parameter is the call back to get the character during the typing (real time)
-  final Function? onChangeSingleText;
+  /// This parameter is the call back to get the character during the typing (real time) and the index of the single text
+  final Function(String value, int index)? onChangeSingleText;
 
   /// This parameter is the call back to get the character when press the done/return button from the keyboard
-  final Function? onSubmitSingleText;
+  final Function(String value)? onSubmitSingleText;
 
   /// This parameter is the call back to validate the characters based on the length
   final Function? onValidationBaseOnLength;

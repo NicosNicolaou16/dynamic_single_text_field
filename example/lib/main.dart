@@ -51,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
             topLabelText: "top label $index",
             bottomLabelText: "bottom label $index")));
     List.generate(
-        7,
+        3,
         (index) => singleTextModelList3.add(SingleTextModel(
             singleText: "",
             topLabelText: "top label $index",
@@ -74,79 +74,87 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          const SizedBox(
-            height: 100,
-          ),
-          DynamicSingleTextField(
-            singleTextModelList: singleTextModelList1,
-            showLabelsType: ShowLabelsTypeEnum.hideLabelsType,
-            inputBorder: getInputBorder(),
-            singleDynamicListHeight: 70,
-            topLabelMarginBottom: 20,
-            bottomLabelMarginTop: 20,
-            enableInputBorder: getInputBorder(),
-            disableInputBorder: getInputBorder(),
-            focusedInputBorder: getInputBorder(),
-            textInputType: TextInputType.number,
-            onChangeSingleText: (String value, int index) {
-              if (kDebugMode) {
-                print("value: $value index: $index");
-              }
-            },
-            onValidationBaseOnLength: () {
-              if (kDebugMode) {
-                print("validated");
-              }
-            },
-          ),
-          const SizedBox(
-            height: 100,
-          ),
-          DynamicSingleTextField(
-            singleTextModelList: singleTextModelList2,
-            showLabelsType: ShowLabelsTypeEnum.showBothLabelsType,
-            inputBorder: getInputBorder(),
-            topLabelMarginBottom: 20,
-            bottomLabelMarginTop: 20,
-            enableInputBorder: getInputBorder(),
-            disableInputBorder: getInputBorder(),
-            focusedInputBorder: getInputBorder(),
-            textInputType: TextInputType.number,
-            onChangeSingleText: (String value, int index) {
-              if (kDebugMode) {
-                print("value: $value index: $index");
-              }
-            },
-            onValidationBaseOnLength: () {
-              if (kDebugMode) {
-                print("validated");
-              }
-            },
-          ),
-          const SizedBox(
-            height: 100,
-          ),
-          DynamicSingleTextField(
-            singleTextModelList: singleTextModelList3,
-            showLabelsType: ShowLabelsTypeEnum.showBothLabelsType,
-            inputBorder: getInputBorder(),
-            topLabelMarginBottom: 20,
-            bottomLabelMarginTop: 20,
-            textInputType: TextInputType.text,
-            onChangeSingleText: (String value, int index) {
-              if (kDebugMode) {
-                print("value: $value index: $index");
-              }
-            },
-            onValidationBaseOnLength: () {
-              if (kDebugMode) {
-                print("validated");
-              }
-            },
-          ),
-        ],
+      resizeToAvoidBottomInset: true,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 100,
+            ),
+            DynamicSingleTextField(
+              singleTextModelList: singleTextModelList1,
+              showLabelsType: ShowLabelsTypeEnum.hideLabelsType,
+              inputBorder: getInputBorder(),
+              singleDynamicListHeight: 70,
+              topLabelMarginBottom: 20,
+              bottomLabelMarginTop: 20,
+              enableInputBorder: getInputBorder(),
+              disableInputBorder: getInputBorder(),
+              focusedInputBorder: getInputBorder(),
+              textInputType: TextInputType.number,
+              onChangeSingleText: (String value, int index) {
+                if (kDebugMode) {
+                  print("value: $value index: $index");
+                }
+              },
+              onValidationBaseOnLength: () {
+                if (kDebugMode) {
+                  print("validated");
+                }
+              },
+            ),
+            const SizedBox(
+              height: 100,
+            ),
+            DynamicSingleTextField(
+              singleTextModelList: singleTextModelList2,
+              showLabelsType: ShowLabelsTypeEnum.showBothLabelsType,
+              inputBorder: getInputBorder(),
+              topLabelMarginBottom: 20,
+              bottomLabelMarginTop: 20,
+              enableInputBorder: getInputBorder(),
+              disableInputBorder: getInputBorder(),
+              focusedInputBorder: getInputBorder(),
+              textInputType: TextInputType.number,
+              onChangeSingleText: (String value, int index) {
+                if (kDebugMode) {
+                  print("value: $value index: $index");
+                }
+              },
+              onValidationBaseOnLength: () {
+                if (kDebugMode) {
+                  print("validated");
+                }
+              },
+            ),
+            const SizedBox(
+              height: 100,
+            ),
+            DynamicSingleTextField(
+              singleTextModelList: singleTextModelList3,
+              showLabelsType: ShowLabelsTypeEnum.showBothLabelsType,
+              inputBorder: getInputBorder(),
+              topLabelMarginBottom: 20,
+              bottomLabelMarginTop: 20,
+              textInputType: TextInputType.text,
+              onChangeSingleText: (String value, int index) {
+                if (kDebugMode) {
+                  print("value: $value index: $index");
+                }
+              },
+              onSubmitSingleText: (String value) {
+                if (kDebugMode) {
+                  print("value: $value");
+                }
+              },
+              onValidationBaseOnLength: () {
+                if (kDebugMode) {
+                  print("validated");
+                }
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
