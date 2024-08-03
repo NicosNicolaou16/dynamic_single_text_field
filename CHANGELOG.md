@@ -1,3 +1,9 @@
+## 0.0.2
+
+What's new:
+- Replaced the Expanded Widget with SizeBox and added a new option to change the height of the ListView `singleDynamicListHeight` with default value 150.
+- Updated the documentation.
+
 ## 0.0.2+1
 
 What's new:
