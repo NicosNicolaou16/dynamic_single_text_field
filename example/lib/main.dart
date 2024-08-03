@@ -51,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
             topLabelText: "top label $index",
             bottomLabelText: "bottom label $index")));
     List.generate(
-        3,
+        7,
         (index) => singleTextModelList3.add(SingleTextModel(
             singleText: "",
             topLabelText: "top label $index",
