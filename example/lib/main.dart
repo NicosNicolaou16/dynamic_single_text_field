@@ -75,7 +75,6 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const SizedBox(
             height: 100,
@@ -84,6 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
             singleTextModelList: singleTextModelList1,
             showLabelsType: ShowLabelsTypeEnum.hideLabelsType,
             inputBorder: getInputBorder(),
+            singleDynamicListHeight: 70,
             topLabelMarginBottom: 20,
             bottomLabelMarginTop: 20,
             enableInputBorder: getInputBorder(),
@@ -100,6 +100,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 print("validated");
               }
             },
+          ),
+          const SizedBox(
+            height: 100,
           ),
           DynamicSingleTextField(
             singleTextModelList: singleTextModelList2,
@@ -121,6 +124,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 print("validated");
               }
             },
+          ),
+          const SizedBox(
+            height: 100,
           ),
           DynamicSingleTextField(
             singleTextModelList: singleTextModelList3,

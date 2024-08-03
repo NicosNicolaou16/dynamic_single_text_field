@@ -16,6 +16,9 @@ class DynamicSingleTextField extends StatefulWidget {
   ///  This parameter is the option to set the scroll controller for the ListView
   final ScrollController? scrollController;
 
+  ///  This parameter is the option to set the height of the dynamic ListView
+  final double singleDynamicListHeight;
+
   ///Single Text Section
 
   /// This parameter is the option to set the height for the single texts, with default value 70
@@ -99,6 +102,7 @@ class DynamicSingleTextField extends StatefulWidget {
     required this.singleTextModelList,
     this.scrollPhysics,
     this.scrollController,
+    this.singleDynamicListHeight = 150,
     this.singleTextHeight = 70,
     this.singleTextWidth = 70,
     this.textFieldTextStyle,
@@ -144,7 +148,9 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return SizedBox(
+      height: widget.singleDynamicListHeight,
+      width: double.infinity,
       child: ListView.builder(
         itemCount: widget.singleTextModelList.length,
         scrollDirection: Axis.horizontal,
