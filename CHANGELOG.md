@@ -1,7 +1,7 @@
 ## 0.0.4
 
 What's new:
-- Updated the Example project with the new Flutter SDK.
+- Updated the Example project with the latest Flutter SDK and tested.
 - Updated the README file and improve the documentation.
 
 ## 0.0.3
