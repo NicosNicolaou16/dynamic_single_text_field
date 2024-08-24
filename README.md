@@ -9,8 +9,8 @@ with top/bottom text label, and different customizations.
 Version Minimum Flutter SDK: 3.0.0
 
 Tested Versioning: <br />
-Flutter SDK version: 3.22.3 <br />
-Dart Version: 3.4.4 <br /> <br />
+Flutter SDK version: 3.24.1 <br />
+Dart Version: 3.5.1 <br /> <br />
 
 ## Usage
 
