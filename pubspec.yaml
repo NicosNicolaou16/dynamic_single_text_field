@@ -1,6 +1,6 @@
 name: dynamic_single_text_field
 description: "This package provide you dynamic single text field with custom design."
-version: 0.0.4
+version: 0.0.5
 homepage: https://github.com/NicosNicolaou16/dynamic_single_text_field/tree/main
 
 environment:
@@ -14,7 +14,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^4.0.0
+  flutter_lints: ^5.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
