@@ -96,6 +96,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState() {
+    /**
+     * initializing three list with the SingleTextModel
+     * */
     List.generate(
         7,
             (index) =>
