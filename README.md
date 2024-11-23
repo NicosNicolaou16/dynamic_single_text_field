@@ -1,16 +1,20 @@
 ## Features
 
-This package is a dynamic single text field (it is like PIN/OTP code view but has not PIN/OTP
-functionalities)
-with top/bottom text label, and different customizations.
+This package is a dynamic single text field allows for the dynamic creation of multiple text fields
+based on the developer's needs (similar to OTP/passcode inputs, but without the OTP/passcode
+functionality—only the UI is provided).
+You can create a list of `SingleTextModel` instances, each representing a single text field. Each
+`SingleTextModel` can be customized with values such as preset characters,
+and additional text displayed under the field. Each `SingleTextModel` accepts a single input
+character.
 
 ## Getting started
 
 Version Minimum Flutter SDK: 3.0.0
 
 Tested Versioning: <br />
-Flutter SDK version: 3.24.3 <br />
-Dart Version: 3.5.3 <br /> <br />
+Flutter SDK version: 3.24.5 <br />
+Dart Version: 3.5.4 <br /> <br />
 
 ## Usage
 
@@ -92,6 +96,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState() {
+    /**
+     * initializing three list with the SingleTextModel
+     * */
     List.generate(
         7,
             (index) =>

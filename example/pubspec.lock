@@ -55,7 +55,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.0.5"
+    version: "0.0.6"
   fake_async:
     dependency: transitive
     description:
@@ -217,4 +217,4 @@ packages:
     version: "14.2.5"
 sdks:
   dart: ">=3.5.0 <4.0.0"
-  flutter: ">=3.24.3"
+  flutter: ">=3.24.5"
