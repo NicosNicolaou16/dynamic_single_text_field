@@ -1,8 +1,12 @@
 ## Features
 
-This package is a dynamic single text field (it is like PIN/OTP code view but has not PIN/OTP
-functionalities)
-with top/bottom text label, and different customizations.
+This package is a dynamic single text field allows for the dynamic creation of multiple text fields
+based on the user's needs (similar to OTP/passcode inputs, but without the OTP/passcode
+functionality—only the UI is provided).
+You can create a list of `SingleTextModel` instances, each representing a single text field. Each
+`SingleTextModel` can be customized with values such as preset characters,
+and additional text displayed under the field. Each `SingleTextModel` accepts a single input
+character.
 
 ## Getting started
 
