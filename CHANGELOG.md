@@ -1,3 +1,12 @@
+## 0.0.7
+
+What's new:
+- Updated the example project with the latest Flutter SDK and tested.
+- Updated the README file and improve the documentation.
+- Updated the Android Side.
+    - Update Gradle to latest version.
+    - Updated Kotlin to Version.
+
 ## 0.0.6
 
 What's new:
