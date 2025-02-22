@@ -13,8 +13,8 @@ character.
 Version Minimum Flutter SDK: 3.0.0
 
 Tested Versioning: <br />
-Flutter SDK version: 3.27.3 <br />
-Dart Version: 3.6.1 <br /> <br />
+Flutter SDK version: 3.29.0 <br />
+Dart Version: 3.7.0 <br /> <br />
 
 ## Usage
 
