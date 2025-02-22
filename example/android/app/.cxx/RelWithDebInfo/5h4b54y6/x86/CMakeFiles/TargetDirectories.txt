@@ -1,2 +1,0 @@
-C:/Users/Nicos/Desktop/AndroidProjects/dynamic_single_text_field/example/android/app/.cxx/RelWithDebInfo/5h4b54y6/x86/CMakeFiles/edit_cache.dir
-C:/Users/Nicos/Desktop/AndroidProjects/dynamic_single_text_field/example/android/app/.cxx/RelWithDebInfo/5h4b54y6/x86/CMakeFiles/rebuild_cache.dir
