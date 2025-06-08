@@ -7,6 +7,7 @@ What's new:
   - Updated Kotlin to latest version.
   - Updated NDK to latest Versions.
   - Updated CMake to latest Versions.
+  - Updated minimum SDK from 24 to 27.
 
 ## 0.0.9
 
