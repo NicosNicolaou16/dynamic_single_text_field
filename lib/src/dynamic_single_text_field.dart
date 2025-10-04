@@ -134,6 +134,8 @@ class DynamicSingleTextField extends StatefulWidget {
 }
 
 class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
+  final List<TextEditingController> _textEditingControllerList = [];
+
   void _focusProcess(int index) {
     if (widget.singleTextModelList[index].singleText.isEmpty && index != 0) {
       FocusScope.of(context).previousFocus();
@@ -147,6 +149,14 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
       widget.singleTextModelList.map((e) => e.singleText).join();
 
   @override
+  void dispose() {
+    for (var element in _textEditingControllerList) {
+      element.dispose();
+    }
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: widget.singleDynamicListHeight,
@@ -158,8 +168,8 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
         controller: widget.scrollController,
         itemBuilder: (context, index) {
           SingleTextModel singleTextModel = widget.singleTextModelList[index];
-          TextEditingController textEditingController = TextEditingController();
-          textEditingController.text = singleTextModel.singleText;
+          _textEditingControllerList.add(TextEditingController());
+          _textEditingControllerList[index].text = singleTextModel.singleText;
           return Column(
             children: [
               if (widget.showLabelsType ==
@@ -167,7 +177,8 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
                   widget.showLabelsType ==
                       ShowLabelsTypeEnum.showBothLabelsType)
                 _topLabel(singleTextModel),
-              _singleTextField(singleTextModel, textEditingController, index),
+              _singleTextField(
+                  singleTextModel, _textEditingControllerList[index], index),
               if (widget.showLabelsType ==
                       ShowLabelsTypeEnum.showBottomLabelType ||
                   widget.showLabelsType ==
