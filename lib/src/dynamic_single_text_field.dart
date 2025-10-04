@@ -134,7 +134,7 @@ class DynamicSingleTextField extends StatefulWidget {
 }
 
 class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
-  _focusProcess(int index) {
+  void _focusProcess(int index) {
     if (widget.singleTextModelList[index].singleText.isEmpty && index != 0) {
       FocusScope.of(context).previousFocus();
     } else if (index != widget.singleTextModelList.length - 1 &&
