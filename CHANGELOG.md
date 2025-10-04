@@ -8,6 +8,7 @@ What's new:
   - Updated NDK to latest version.
   - Updated CMake to latest version.
   - Updated Target SDK to latest version.
+  - Migrated Gradle files from Groovy to KTS.
 - Updated the README file.
 
 ## 1.0.1
