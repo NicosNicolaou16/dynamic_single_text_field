@@ -137,15 +137,7 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
   final List<TextEditingController> _textEditingControllerList = [];
   final List<FocusNode> _focusNodeList = [];
 
-  void _focusProcess(int index) {
-    if (widget.singleTextModelList[index].singleText.isEmpty && index != 0) {
-      _focusNodeList[index].previousFocus();
-    } else if (index != widget.singleTextModelList.length - 1 &&
-        widget.singleTextModelList.first.singleText.isNotEmpty) {
-      _focusNodeList[index].nextFocus();
-    }
-  }
-
+  /// This method is to get the single text as string
   String get _getSingleTextAsString =>
       widget.singleTextModelList.map((e) => e.singleText).join();
 
@@ -155,6 +147,7 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
     _init();
   }
 
+  /// This method is to initialize the text editing controller and focus node for each single text
   Future<void> _init() async {
     for (int i = 0; i < widget.singleTextModelList.length; i++) {
       _textEditingControllerList.add(TextEditingController());
@@ -169,6 +162,7 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
     super.dispose();
   }
 
+  /// This method is to dispose the text editing controller and focus node for each single text
   Future<void> _dispose() async {
     for (var element in _textEditingControllerList) {
       element.dispose();
@@ -179,6 +173,7 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
     HardwareKeyboard.instance.removeHandler(_hardwareInputCallback);
   }
 
+  /// This method is to handle the update widget for the dynamic list view
   @override
   void didUpdateWidget(covariant DynamicSingleTextField oldWidget) {
     if (oldWidget.singleTextModelList.length !=
@@ -186,6 +181,33 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
       _init();
     }
     super.didUpdateWidget(oldWidget);
+  }
+
+  /// This method is to handle the focus process
+  void _focusProcess(int index) {
+    if (widget.singleTextModelList[index].singleText.isEmpty && index != 0) {
+      _focusNodeList[index].previousFocus();
+    } else if (index != widget.singleTextModelList.length - 1 &&
+        widget.singleTextModelList.first.singleText.isNotEmpty) {
+      _focusNodeList[index].nextFocus();
+    }
+  }
+
+  /// This method is to handle the hardware input callback
+  bool _hardwareInputCallback(KeyEvent event) {
+    if (event is! KeyDownEvent) return false;
+
+    if (event.logicalKey == LogicalKeyboardKey.backspace) {
+      final int currentFocusIndex =
+      _focusNodeList.indexWhere((node) => node.hasFocus);
+      if (currentFocusIndex != -1 &&
+          currentFocusIndex != 0 &&
+          _textEditingControllerList[currentFocusIndex].text.isEmpty) {
+        _focusNodeList[currentFocusIndex].previousFocus();
+        return true;
+      }
+    }
+    return false;
   }
 
   @override
@@ -225,6 +247,7 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
     );
   }
 
+  /// This method is to handle the top label for the single text
   Widget _topLabel(SingleTextModel singleTextModel) {
     return Container(
       margin: EdgeInsets.only(
@@ -240,6 +263,7 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
     );
   }
 
+  /// This method is to handle the single text field
   Widget _singleTextField(
     SingleTextModel singleTextModel,
     TextEditingController textEditingController,
@@ -304,6 +328,7 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
     );
   }
 
+  /// This method is to handle the bottom label for the single text
   Widget _bottomLabel(SingleTextModel singleTextModel) {
     return Container(
       margin: EdgeInsets.only(
@@ -315,21 +340,5 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
         style: widget.textStyleBottomLabel ?? const TextStyle(),
       ),
     );
-  }
-
-  bool _hardwareInputCallback(KeyEvent event) {
-    if (event is! KeyDownEvent) return false;
-
-    if (event.logicalKey == LogicalKeyboardKey.backspace) {
-      final int currentFocusIndex =
-          _focusNodeList.indexWhere((node) => node.hasFocus);
-      if (currentFocusIndex != -1 &&
-          currentFocusIndex != 0 &&
-          _textEditingControllerList[currentFocusIndex].text.isEmpty) {
-        _focusNodeList[currentFocusIndex].previousFocus();
-        return true;
-      }
-    }
-    return false;
   }
 }
