@@ -1,3 +1,18 @@
+## 1.0.2
+
+What's new:
+- Fixed an issue where pressing Backspace on an empty single text field did not focus on the previous text field.
+- Fixed minor bugs and improved code quality.
+- Updated and tested the example project with the latest Flutter SDK 3.35.5.
+- Updated the Android Side for example project.
+  - Updated Gradle to latest version.
+  - Updated Kotlin to latest version.
+  - Updated NDK to latest version.
+  - Updated CMake to latest version.
+  - Updated Target SDK to latest version.
+  - Migrated Gradle files from Groovy to KTS.
+- Updated the README file and improve the code documentation.
+
 ## 1.0.1
 
 What's new:

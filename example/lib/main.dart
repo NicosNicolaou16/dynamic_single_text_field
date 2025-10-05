@@ -33,9 +33,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<SingleTextModel> singleTextModelList1 = [];
-  final List<SingleTextModel> singleTextModelList2 = [];
-  final List<SingleTextModel> singleTextModelList3 = [];
+  final List<SingleTextModel> _singleTextModelList1 = [];
+  final List<SingleTextModel> _singleTextModelList2 = [];
+  final List<SingleTextModel> _singleTextModelList3 = [];
 
   @override
   void initState() {
@@ -44,18 +44,18 @@ class _MyHomePageState extends State<MyHomePage> {
     ///
     List.generate(
         7,
-        (index) => singleTextModelList1.add(SingleTextModel(
+        (index) => _singleTextModelList1.add(SingleTextModel(
               singleText: "",
             )));
     List.generate(
         7,
-        (index) => singleTextModelList2.add(SingleTextModel(
+        (index) => _singleTextModelList2.add(SingleTextModel(
             singleText: "",
             topLabelText: "top label $index",
             bottomLabelText: "bottom label $index")));
     List.generate(
         7,
-        (index) => singleTextModelList3.add(SingleTextModel(
+        (index) => _singleTextModelList3.add(SingleTextModel(
             singleText: "",
             topLabelText: "top label $index",
             bottomLabelText: "bottom label $index")));
@@ -85,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 100,
             ),
             DynamicSingleTextField(
-              singleTextModelList: singleTextModelList1,
+              singleTextModelList: _singleTextModelList1,
               showLabelsType: ShowLabelsTypeEnum.hideLabelsType,
               inputBorder: getInputBorder(),
               singleDynamicListHeight: 70,
@@ -110,7 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 100,
             ),
             DynamicSingleTextField(
-              singleTextModelList: singleTextModelList2,
+              singleTextModelList: _singleTextModelList2,
               showLabelsType: ShowLabelsTypeEnum.showBothLabelsType,
               inputBorder: getInputBorder(),
               topLabelMarginBottom: 20,
@@ -134,7 +134,7 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 100,
             ),
             DynamicSingleTextField(
-              singleTextModelList: singleTextModelList3,
+              singleTextModelList: _singleTextModelList3,
               showLabelsType: ShowLabelsTypeEnum.showBothLabelsType,
               inputBorder: getInputBorder(),
               topLabelMarginBottom: 20,

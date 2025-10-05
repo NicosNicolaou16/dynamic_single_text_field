@@ -134,17 +134,83 @@ class DynamicSingleTextField extends StatefulWidget {
 }
 
 class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
-  _focusProcess(int index) {
+  final List<TextEditingController> _textEditingControllerList = [];
+  final List<FocusNode> _focusNodeList = [];
+
+  /// This method is to get the single text as string
+  String get _getSingleTextAsString =>
+      widget.singleTextModelList.map((e) => e.singleText).join();
+
+  @override
+  void initState() {
+    super.initState();
+    _init();
+  }
+
+  /// This method is to initialize the text editing controller and focus node for each single text
+  Future<void> _init() async {
+    for (int i = 0; i < widget.singleTextModelList.length; i++) {
+      _textEditingControllerList.add(TextEditingController());
+      _focusNodeList.add(FocusNode());
+    }
+    HardwareKeyboard.instance.addHandler(_hardwareInputCallback);
+  }
+
+  @override
+  void dispose() {
+    _dispose();
+    super.dispose();
+  }
+
+  /// This method is to dispose the text editing controller and focus node for each single text
+  Future<void> _dispose() async {
+    for (var element in _textEditingControllerList) {
+      element.dispose();
+    }
+    for (var element in _focusNodeList) {
+      element.dispose();
+    }
+    HardwareKeyboard.instance.removeHandler(_hardwareInputCallback);
+  }
+
+  /// This method is to handle the update widget for the dynamic list view
+  @override
+  void didUpdateWidget(covariant DynamicSingleTextField oldWidget) {
+    if (oldWidget.singleTextModelList.length !=
+        widget.singleTextModelList.length) {
+      _init();
+    }
+    super.didUpdateWidget(oldWidget);
+  }
+
+  /// This method is to handle the focus process
+  /// @param index is the index of the single text
+  void _focusProcess(int index) {
     if (widget.singleTextModelList[index].singleText.isEmpty && index != 0) {
-      FocusScope.of(context).previousFocus();
+      _focusNodeList[index].previousFocus();
     } else if (index != widget.singleTextModelList.length - 1 &&
         widget.singleTextModelList.first.singleText.isNotEmpty) {
-      FocusScope.of(context).nextFocus();
+      _focusNodeList[index].nextFocus();
     }
   }
 
-  String get _getSingleTextAsString =>
-      widget.singleTextModelList.map((e) => e.singleText).join();
+  /// This method is to handle the hardware input callback
+  /// @param event is the event for the hardware input
+  bool _hardwareInputCallback(KeyEvent event) {
+    if (event is! KeyDownEvent) return false;
+
+    if (event.logicalKey == LogicalKeyboardKey.backspace) {
+      final int currentFocusIndex =
+          _focusNodeList.indexWhere((node) => node.hasFocus);
+      if (currentFocusIndex != -1 &&
+          currentFocusIndex != 0 &&
+          _textEditingControllerList[currentFocusIndex].text.isEmpty) {
+        _focusNodeList[currentFocusIndex].previousFocus();
+        return true;
+      }
+    }
+    return false;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -158,8 +224,7 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
         controller: widget.scrollController,
         itemBuilder: (context, index) {
           SingleTextModel singleTextModel = widget.singleTextModelList[index];
-          TextEditingController textEditingController = TextEditingController();
-          textEditingController.text = singleTextModel.singleText;
+          _textEditingControllerList[index].text = singleTextModel.singleText;
           return Column(
             children: [
               if (widget.showLabelsType ==
@@ -167,7 +232,11 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
                   widget.showLabelsType ==
                       ShowLabelsTypeEnum.showBothLabelsType)
                 _topLabel(singleTextModel),
-              _singleTextField(singleTextModel, textEditingController, index),
+              _singleTextField(
+                  singleTextModel,
+                  _textEditingControllerList[index],
+                  _focusNodeList[index],
+                  index),
               if (widget.showLabelsType ==
                       ShowLabelsTypeEnum.showBottomLabelType ||
                   widget.showLabelsType ==
@@ -180,6 +249,8 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
     );
   }
 
+  /// This method is to handle the top label for the single text
+  /// @param singleTextModel is the model for the single text
   Widget _topLabel(SingleTextModel singleTextModel) {
     return Container(
       margin: EdgeInsets.only(
@@ -195,8 +266,17 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
     );
   }
 
-  Widget _singleTextField(SingleTextModel singleTextModel,
-      TextEditingController textEditingController, int index) {
+  /// This method is to handle the single text field
+  /// @param singleTextModel is the model for the single text
+  /// @param textEditingController is the text editing controller for the single text
+  /// @param focusNode is the focus node for the single text
+  /// @param index is the index of the single text
+  Widget _singleTextField(
+    SingleTextModel singleTextModel,
+    TextEditingController textEditingController,
+    FocusNode focusNode,
+    int index,
+  ) {
     return Container(
       height: widget.singleTextHeight,
       width: widget.singleTextWidth,
@@ -204,6 +284,8 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
         left: widget.widgetLeftMargin,
       ),
       child: TextField(
+        key: Key(index.toString()),
+        focusNode: focusNode,
         controller: textEditingController,
         textAlign: TextAlign.center,
         keyboardType: widget.textInputType,
@@ -253,6 +335,8 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
     );
   }
 
+  /// This method is to handle the bottom label for the single text
+  /// @param singleTextModel is the model for the single text
   Widget _bottomLabel(SingleTextModel singleTextModel) {
     return Container(
       margin: EdgeInsets.only(
