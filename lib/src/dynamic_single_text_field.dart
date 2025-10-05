@@ -184,6 +184,7 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
   }
 
   /// This method is to handle the focus process
+  /// @param index is the index of the single text
   void _focusProcess(int index) {
     if (widget.singleTextModelList[index].singleText.isEmpty && index != 0) {
       _focusNodeList[index].previousFocus();
@@ -194,12 +195,13 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
   }
 
   /// This method is to handle the hardware input callback
+  /// @param event is the event for the hardware input
   bool _hardwareInputCallback(KeyEvent event) {
     if (event is! KeyDownEvent) return false;
 
     if (event.logicalKey == LogicalKeyboardKey.backspace) {
       final int currentFocusIndex =
-      _focusNodeList.indexWhere((node) => node.hasFocus);
+          _focusNodeList.indexWhere((node) => node.hasFocus);
       if (currentFocusIndex != -1 &&
           currentFocusIndex != 0 &&
           _textEditingControllerList[currentFocusIndex].text.isEmpty) {
@@ -248,6 +250,7 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
   }
 
   /// This method is to handle the top label for the single text
+  /// @param singleTextModel is the model for the single text
   Widget _topLabel(SingleTextModel singleTextModel) {
     return Container(
       margin: EdgeInsets.only(
@@ -264,6 +267,10 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
   }
 
   /// This method is to handle the single text field
+  /// @param singleTextModel is the model for the single text
+  /// @param textEditingController is the text editing controller for the single text
+  /// @param focusNode is the focus node for the single text
+  /// @param index is the index of the single text
   Widget _singleTextField(
     SingleTextModel singleTextModel,
     TextEditingController textEditingController,
@@ -329,6 +336,7 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
   }
 
   /// This method is to handle the bottom label for the single text
+  /// @param singleTextModel is the model for the single text
   Widget _bottomLabel(SingleTextModel singleTextModel) {
     return Container(
       margin: EdgeInsets.only(
