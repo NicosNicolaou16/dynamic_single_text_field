@@ -9,7 +9,7 @@ plugins {
 android {
     namespace = "com.nick.sample_project"
     compileSdk = 36
-    ndkVersion = "28.2.13676358"
+    ndkVersion = "29.0.14206865"
     buildToolsVersion = "36.0.0"
 
     compileOptions {
@@ -50,7 +50,7 @@ android {
 
     externalNativeBuild {
         cmake {
-            version = "4.1.1"
+            version = "4.1.2"
         }
     }
 }
