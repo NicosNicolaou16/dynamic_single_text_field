@@ -228,6 +228,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
 ## Additional information
 
-Thank you for using my package, any feedback is welcome. You can report any bug, ask a question on
-package GitHub repository.
-https://github.com/NicosNicolaou16/dynamic_single_text_field/issues
+Thank you for using **dynamic_single_text_field**! Your feedback helps make this package better.
+If you encounter any bugs or unexpected behavior, please open an issue on
+the [GitHub repository](https://github.com/NicosNicolaou16/dynamic_single_text_field/issues).
