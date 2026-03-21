@@ -13,8 +13,8 @@ character.
 Version Minimum Flutter SDK: 3.0.0
 
 Tested Versioning: <br />
-Flutter SDK version: 3.35.7 <br />
-Dart Version: 3.9.2 <br /> <br />
+Flutter SDK version: 3.41.5 <br />
+Dart Version: 3.11.3 <br /> <br />
 
 ## Usage
 
@@ -228,6 +228,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
 ## Additional information
 
-Thank you for using my package, any feedback is welcome. You can report any bug, ask a question on
-package GitHub repository.
-https://github.com/NicosNicolaou16/dynamic_single_text_field/issues
+Thank you for using **dynamic_single_text_field**! Your feedback helps make this package better.
+If you encounter any bugs or unexpected behavior, please open an issue on
+the [GitHub repository](https://github.com/NicosNicolaou16/dynamic_single_text_field/issues).
