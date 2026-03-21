@@ -5,7 +5,7 @@ What's new:
 - Updated the Android Side for example project.
   - Updated Gradle to latest version.
   - Updated Kotlin to latest version.
-- Updated the README file and improve the code documentation.
+- Updated the README file.
 
 ## 1.0.3
 
