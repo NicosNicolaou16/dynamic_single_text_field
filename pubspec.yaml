@@ -5,7 +5,7 @@ topics:
   - single
   - text
   - field
-version: 1.0.3
+version: 1.0.4
 homepage: https://github.com/NicosNicolaou16/dynamic_single_text_field/tree/main
 
 environment:
