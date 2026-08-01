@@ -54,8 +54,8 @@ Dart Version: 3.12.2 <br /> <br />
 | `bottomLabelMarginTop`     | This parameter is the bottom label text margin top, with default value 0                                                                                                                                         |
 
 <p align="left">
-<a title="simulator_image"><img src="https://github.com/NicosNicolaou16/dynamic_single_text_field/raw/main/screenshots/Screenshot_20240712_220940.png" height="500" width="200"></a>
-<a title="simulator_image"><img src="https://github.com/NicosNicolaou16/dynamic_single_text_field/raw/main/screenshots/example_gif.gif" height="500" width="200"></a>
+<a title="simulator_image"><img src="https://github.com/NicosNicolaou16/dynamic_single_text_field/raw/main/screenshots/Screenshot_20260801_210109.png" height="500" width="200"></a>
+<a title="simulator_image"><img src="https://github.com/NicosNicolaou16/dynamic_single_text_field/raw/main/screenshots/example1_gif.gif" height="500" width="200"></a>
 </p>
 
 ```dart
