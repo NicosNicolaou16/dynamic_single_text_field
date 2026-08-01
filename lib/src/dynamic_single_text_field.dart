@@ -226,17 +226,20 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
           SingleTextModel singleTextModel = widget.singleTextModelList[index];
           _textEditingControllerList[index].text = singleTextModel.singleText;
           return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               if (widget.showLabelsType ==
                       ShowLabelsTypeEnum.showTopLabelType ||
                   widget.showLabelsType ==
                       ShowLabelsTypeEnum.showBothLabelsType)
                 _topLabel(singleTextModel),
-              _singleTextField(
-                  singleTextModel,
-                  _textEditingControllerList[index],
-                  _focusNodeList[index],
-                  index),
+              Expanded(
+                child: _singleTextField(
+                    singleTextModel,
+                    _textEditingControllerList[index],
+                    _focusNodeList[index],
+                    index),
+              ),
               if (widget.showLabelsType ==
                       ShowLabelsTypeEnum.showBottomLabelType ||
                   widget.showLabelsType ==
