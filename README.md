@@ -1,12 +1,16 @@
-## Features
+## ✨ Features
 
-This package is a dynamic single text field allows for the dynamic creation of multiple text fields
-based on the developer's needs (similar to OTP/passcode inputs, but without the OTP/passcode
-functionality—only the UI is provided).
-You can create a list of `SingleTextModel` instances, each representing a single text field. Each
-`SingleTextModel` can be customized with values such as preset characters,
-and additional text displayed under the field. Each `SingleTextModel` accepts a single input
-character.
+This package provides a dynamic single text field system that allows developers to create multiple customizable text fields based on their requirements.
+
+Inspired by OTP/passcode input designs (But without the OTP/passcode functionality—only the UI is provided), it focuses purely on the UI experience without any built-in OTP or validation logic. You have complete control over the input behavior and appearance.
+
+* 🧩 **Dynamic Text Field Creation** – Easily generate multiple single-character text fields with a flexible and developer-friendly API.
+* 🎨 **Highly Customizable Fields** – Configure each field individually using `SingleTextModel` instances with custom values, styles, and additional content.
+* ✍️ **Single Character Input** – Each `SingleTextModel` is designed to handle a single input character for clean and structured layouts.
+* 📌 **Custom Field Data** – Support preset characters and additional text displayed below each field.
+* ⚡ **Flexible UI Component** – Build OTP-style inputs, code fields, segmented inputs, or any custom single-character text layout.
+* 🚀 **Simple Integration** – Create and manage dynamic text fields with minimal setup and a clean API.
+
 
 ## Getting started
 
