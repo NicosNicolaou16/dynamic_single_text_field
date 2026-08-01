@@ -12,7 +12,7 @@ Inspired by OTP/passcode input designs (But without the OTP/passcode functionali
 * 🚀 **Simple Integration** – Create and manage dynamic text fields with minimal setup and a clean API.
 
 
-## Getting started
+## 🚀 Getting started
 
 Version Minimum Flutter SDK: 3.0.0
 
@@ -20,7 +20,7 @@ Tested Versioning: <br />
 Flutter SDK version: 3.44.8 <br />
 Dart Version: 3.12.2 <br /> <br />
 
-## Usage
+## 💡 Usage
 
 | Parameters                 | Description                                                                                                                                                                                                      |
 |----------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
