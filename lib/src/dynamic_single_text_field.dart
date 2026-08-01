@@ -232,11 +232,13 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
                   widget.showLabelsType ==
                       ShowLabelsTypeEnum.showBothLabelsType)
                 _topLabel(singleTextModel),
-              _singleTextField(
-                  singleTextModel,
-                  _textEditingControllerList[index],
-                  _focusNodeList[index],
-                  index),
+              Expanded(
+                child: _singleTextField(
+                    singleTextModel,
+                    _textEditingControllerList[index],
+                    _focusNodeList[index],
+                    index),
+              ),
               if (widget.showLabelsType ==
                       ShowLabelsTypeEnum.showBottomLabelType ||
                   widget.showLabelsType ==
@@ -319,8 +321,7 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
           }
           if (widget.onValidationBaseOnLength != null) {
             if (widget.singleTextModelList
-                .where((element) => element.singleText.isNotEmpty)
-                .isNotEmpty) {
+                .every((element) => element.singleText.isNotEmpty)) {
               widget.onValidationBaseOnLength!();
             }
           }
