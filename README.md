@@ -22,6 +22,11 @@ Dart Version: 3.12.2 <br /> <br />
 
 ## 💡 Usage
 
+<p align="left">
+<a title="simulator_image"><img src="https://github.com/NicosNicolaou16/dynamic_single_text_field/raw/main/screenshots/Screenshot_20260801_210109.png" height="500" width="200"></a>
+<a title="simulator_image"><img src="https://github.com/NicosNicolaou16/dynamic_single_text_field/raw/main/screenshots/example1_gif.gif" height="500" width="200"></a>
+</p>
+
 | Parameters                 | Description                                                                                                                                                                                                      |
 |----------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `singleTextModelList`      | This parameter is the list of model for single text. Important Note: Use this model to insert data into dynamic single text: `SingleTextModel({this.singleText = "", this.topLabelText, this.bottomLabelText});` |
@@ -52,11 +57,6 @@ Dart Version: 3.12.2 <br /> <br />
 | `widgetLeftMargin`         | This parameter is the single texts left margin, with default value 20                                                                                                                                            |
 | `topLabelMarginBottom`     | This parameter is the top label text margin bottom, with default value 0                                                                                                                                         |
 | `bottomLabelMarginTop`     | This parameter is the bottom label text margin top, with default value 0                                                                                                                                         |
-
-<p align="left">
-<a title="simulator_image"><img src="https://github.com/NicosNicolaou16/dynamic_single_text_field/raw/main/screenshots/Screenshot_20260801_210109.png" height="500" width="200"></a>
-<a title="simulator_image"><img src="https://github.com/NicosNicolaou16/dynamic_single_text_field/raw/main/screenshots/example1_gif.gif" height="500" width="200"></a>
-</p>
 
 ```dart
 import 'package:dynamic_single_text_field/dynamic_single_text_field.dart';
