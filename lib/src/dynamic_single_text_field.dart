@@ -322,8 +322,7 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
           }
           if (widget.onValidationBaseOnLength != null) {
             if (widget.singleTextModelList
-                .where((element) => element.singleText.isNotEmpty)
-                .isNotEmpty) {
+                .every((element) => element.singleText.isNotEmpty)) {
               widget.onValidationBaseOnLength!();
             }
           }
