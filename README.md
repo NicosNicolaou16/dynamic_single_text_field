@@ -260,7 +260,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
 ```
 
-## Additional information
+## ℹ️ Additional information
 
 Thank you for using **dynamic_single_text_field**! Your feedback helps make this package better.
 If you encounter any bugs or unexpected behavior, please open an issue on
