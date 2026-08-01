@@ -226,7 +226,6 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
           SingleTextModel singleTextModel = widget.singleTextModelList[index];
           _textEditingControllerList[index].text = singleTextModel.singleText;
           return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               if (widget.showLabelsType ==
                       ShowLabelsTypeEnum.showTopLabelType ||
