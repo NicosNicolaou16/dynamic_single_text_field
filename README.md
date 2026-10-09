@@ -17,8 +17,8 @@ Inspired by OTP/passcode input designs (But without the OTP/passcode functionali
 Version Minimum Flutter SDK: 3.0.0
 
 Tested Versioning: <br />
-Flutter SDK version: 3.44.8 <br />
-Dart Version: 3.12.2 <br /> <br />
+Flutter SDK version: 3.47.7 <br />
+Dart Version: 3.13.5 <br /> <br />
 
 ## 💡 Usage
 
