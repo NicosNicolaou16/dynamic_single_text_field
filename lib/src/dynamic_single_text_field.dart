@@ -218,7 +218,7 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
     if (widget.singleTextModelList[index].singleText.isEmpty && index != 0) {
       _focusNodeList[index].previousFocus();
     } else if (index != widget.singleTextModelList.length - 1 &&
-        widget.singleTextModelList.first.singleText.isNotEmpty) {
+        widget.singleTextModelList[index].singleText.isNotEmpty) {
       _focusNodeList[index].nextFocus();
     }
   }
