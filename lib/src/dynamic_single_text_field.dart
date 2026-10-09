@@ -265,7 +265,9 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
       if (currentFocusIndex != -1 &&
           currentFocusIndex != 0 &&
           _textEditingControllerList[currentFocusIndex].text.isEmpty) {
-        _focusNodeList[currentFocusIndex].previousFocus();
+        // Go back exactly one box, by index (same as _focusProcess),
+        // instead of previousFocus(), which can skip a box.
+        _moveFocusTo(currentFocusIndex - 1);
         return true;
       }
     }
@@ -306,9 +308,9 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
     String inserted = value;
     if (oldText.isNotEmpty && value.length > oldText.length) {
       inserted = value.startsWith(oldText)
-      // Cursor was after the old character: "5" + "7" = "57" -> added "7".
+          // Cursor was after the old character: "5" + "7" = "57" -> added "7".
           ? value.substring(oldText.length)
-      // Cursor was before the old character: "7" + "5" = "75" -> added "7".
+          // Cursor was before the old character: "7" + "5" = "75" -> added "7".
           : value.substring(0, value.length - oldText.length);
     }
 
@@ -384,7 +386,9 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
     // Call the "all filled" callback only when the code BECOMES complete.
     // If it was already complete (for example the user typed over a middle
     // box), do not call it again.
-    if (widget.onValidationBaseOnLength != null && !wasComplete && _isComplete) {
+    if (widget.onValidationBaseOnLength != null &&
+        !wasComplete &&
+        _isComplete) {
       widget.onValidationBaseOnLength!();
     }
   }
