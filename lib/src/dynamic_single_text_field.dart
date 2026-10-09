@@ -144,16 +144,37 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
   @override
   void initState() {
     super.initState();
-    _init();
+    // Create one controller and one focus node for each box.
+    _syncControllers();
+    HardwareKeyboard.instance.addHandler(_hardwareInputCallback);
   }
 
-  /// This method is to initialize the text editing controller and focus node for each single text
-  Future<void> _init() async {
-    for (int i = 0; i < widget.singleTextModelList.length; i++) {
+  /// This method is to make sure there is exactly one text editing controller
+  /// and one focus node for each single text.
+  /// It adds the missing ones and disposes the extra ones.
+  Future<void> _syncControllers() async {
+    final int length = widget.singleTextModelList.length;
+    // Fewer controllers than boxes: add only the missing ones.
+    // Example: 4 controllers and 6 boxes -> adds 2.
+    while (_textEditingControllerList.length < length) {
       _textEditingControllerList.add(TextEditingController());
       _focusNodeList.add(FocusNode());
     }
-    HardwareKeyboard.instance.addHandler(_hardwareInputCallback);
+    // More controllers than boxes: remove the extra ones from the end.
+    // Example: 6 controllers and 4 boxes -> removes 2.
+    while (_textEditingControllerList.length > length) {
+      final TextEditingController controller =
+          _textEditingControllerList.removeLast();
+      final FocusNode focusNode = _focusNodeList.removeLast();
+      // The removed text fields are still on screen until this frame ends,
+      // so dispose them after the frame.
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        // The removed text fields are still on screen until this frame ends.
+        // Disposing them now would crash, so dispose them after the frame.
+        controller.dispose();
+        focusNode.dispose();
+      });
+    }
   }
 
   @override
@@ -162,25 +183,27 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
     super.dispose();
   }
 
-  /// This method is to dispose the text editing controller and focus node for each single text
+  /// Free every controller and focus node, because the widget is removed.
   Future<void> _dispose() async {
-    for (var element in _textEditingControllerList) {
-      element.dispose();
+    for (final TextEditingController controller in _textEditingControllerList) {
+      controller.dispose();
     }
-    for (var element in _focusNodeList) {
-      element.dispose();
+    for (final FocusNode focusNode in _focusNodeList) {
+      focusNode.dispose();
     }
     HardwareKeyboard.instance.removeHandler(_hardwareInputCallback);
   }
 
-  /// This method is to handle the update widget for the dynamic list view
+  /// This method is to handle the update widget for the dynamic list view.
+  /// It runs every time the parent rebuilds this widget.
   @override
   void didUpdateWidget(covariant DynamicSingleTextField oldWidget) {
-    if (oldWidget.singleTextModelList.length !=
-        widget.singleTextModelList.length) {
-      _init();
-    }
     super.didUpdateWidget(oldWidget);
+    // Compare with the controllers we actually have, not with oldWidget.
+    // If the user added a box to the SAME list and called setState,
+    // oldWidget.singleTextModelList and widget.singleTextModelList are the
+    // same object, so comparing their lengths would miss the change.
+    _syncControllers();
   }
 
   /// This method is to handle the focus process
