@@ -455,9 +455,9 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
         obscureText: widget.isObscureText,
         obscuringCharacter: widget.obscuringCharacter,
         style: widget.textFieldTextStyle ?? const TextStyle(),
-        inputFormatters: [
+        /*inputFormatters: [
           LengthLimitingTextInputFormatter(1),
-        ],
+        ],*/
         decoration: InputDecoration(
           fillColor: widget.singleTextFillColor,
           filled: widget.singleTextFillColor != null,
@@ -473,7 +473,7 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
         ),
         onChanged: (String value) {
           _onSingleTextChanged(value, index);
-          widget.singleTextModelList[index].singleText = value;
+         /* widget.singleTextModelList[index].singleText = value;
           _focusProcess(index);
           if (widget.onChangeSingleText != null) {
             String singleTextAsString = _getSingleTextAsString;
@@ -484,7 +484,7 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
                 .every((element) => element.singleText.isNotEmpty)) {
               widget.onValidationBaseOnLength!();
             }
-          }
+          }*/
         },
         onSubmitted: (String value) {
           if (widget.onSubmitSingleText != null) {
