@@ -146,6 +146,10 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
     super.initState();
     // Create one controller and one focus node for each box.
     _syncControllers();
+    // Put the prefilled text (SingleTextModel.singleText) into each box (see point 3).
+    _syncTexts();
+    // Register the backspace handler only once, here.
+    // It is removed once, in dispose().
     HardwareKeyboard.instance.addHandler(_hardwareInputCallback);
   }
 
@@ -204,6 +208,8 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
     // oldWidget.singleTextModelList and widget.singleTextModelList are the
     // same object, so comparing their lengths would miss the change.
     _syncControllers();
+    // Copy any changed prefilled text into the boxes (see point 3).
+    _syncTexts();
   }
 
   /// This method is to handle the focus process
@@ -235,6 +241,22 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
     return false;
   }
 
+  /// This method is to copy the text of each SingleTextModel into its box.
+  /// It is called from initState() and didUpdateWidget(), never from build().
+  Future<void> _syncTexts() async {
+    for (int i = 0; i < widget.singleTextModelList.length; i++) {
+      // The text the model says this box should have.
+      final String text = widget.singleTextModelList[i].singleText;
+      // The controller that shows this box's text.
+      final TextEditingController controller = _textEditingControllerList[i];
+      // Change it only when it is different. Setting the same text again
+      // would move the cursor and interrupt the user while typing.
+      if (controller.text != text) {
+        controller.text = text;
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -247,7 +269,7 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
         controller: widget.scrollController,
         itemBuilder: (context, index) {
           SingleTextModel singleTextModel = widget.singleTextModelList[index];
-          _textEditingControllerList[index].text = singleTextModel.singleText;
+          //_textEditingControllerList[index].text = singleTextModel.singleText;
           return Column(
             children: [
               if (widget.showLabelsType ==
