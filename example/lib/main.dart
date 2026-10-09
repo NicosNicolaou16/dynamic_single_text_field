@@ -129,7 +129,6 @@ class _MyHomePageState extends State<MyHomePage> {
               singleTextModelList: _recoveryPhraseList,
               showLabelsType: ShowLabelsTypeEnum.showBothLabelsType,
               textInputType: TextInputType.text,
-              autofillHints: const [AutofillHints.oneTimeCode],
               topLabelMarginBottom: 10,
               bottomLabelMarginTop: 10,
               onChangeSingleText: (String value, int index) {
