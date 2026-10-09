@@ -269,7 +269,6 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
         controller: widget.scrollController,
         itemBuilder: (context, index) {
           SingleTextModel singleTextModel = widget.singleTextModelList[index];
-          //_textEditingControllerList[index].text = singleTextModel.singleText;
           return Column(
             children: [
               if (widget.showLabelsType ==
