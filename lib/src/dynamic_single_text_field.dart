@@ -147,6 +147,10 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
   String get _getSingleTextAsString =>
       widget.singleTextModelList.map((e) => e.singleText).join();
 
+  /// This getter is true when every single text has a character.
+  bool get _isComplete => widget.singleTextModelList
+      .every((element) => element.singleText.isNotEmpty);
+
   @override
   void initState() {
     super.initState();
@@ -292,6 +296,9 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
   void _onSingleTextChanged(String value, int index) {
     // The character this box had before the change ("" if it was empty).
     final String oldText = widget.singleTextModelList[index].singleText;
+    // Remember if the code was already complete BEFORE this change, so the
+    // "all filled" callback is only called when it BECOMES complete.
+    final bool wasComplete = _isComplete;
 
     // Work out what the user ADDED.
     // Empty box:  value is exactly what was added (e.g. "5" or "123456").
@@ -299,10 +306,21 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
     String inserted = value;
     if (oldText.isNotEmpty && value.length > oldText.length) {
       inserted = value.startsWith(oldText)
-          // Cursor was after the old character: "5" + "7" = "57" -> added "7".
+      // Cursor was after the old character: "5" + "7" = "57" -> added "7".
           ? value.substring(oldText.length)
-          // Cursor was before the old character: "7" + "5" = "75" -> added "7".
+      // Cursor was before the old character: "7" + "5" = "75" -> added "7".
           : value.substring(0, value.length - oldText.length);
+    }
+
+    // The last box already has a character and the user typed one more:
+    // keep the old character and ignore the new one (there is no next box
+    // to move to, so otherwise every keystroke would replace it again).
+    final bool isLastBox = index == widget.singleTextModelList.length - 1;
+    if (isLastBox && oldText.isNotEmpty && inserted.length == 1) {
+      // Put the old character back in the text field ("57" -> "5").
+      _setSingleText(index, oldText);
+      // Nothing changed, so no callbacks.
+      return;
     }
 
     if (inserted.length > 1) {
@@ -316,8 +334,8 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
       _focusProcess(index);
     }
 
-    // Tell the developer about the change (same callbacks as before).
-    _notifyChanged(index);
+    // Tell the developer about the change.
+    _notifyChanged(index, wasComplete);
   }
 
   /// This method is to put one character in each box, starting at [start].
@@ -356,17 +374,17 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
   }
 
   /// This method is to call the developer's callbacks after a change.
-  /// It is the same code that used to be inside onChanged.
   /// @param index is the index of the single text that changed
-  void _notifyChanged(int index) {
+  /// @param wasComplete is true if every box was already filled before the change
+  void _notifyChanged(int index, bool wasComplete) {
     // Send the whole text (all boxes joined) and the box that changed.
     if (widget.onChangeSingleText != null) {
       widget.onChangeSingleText!(_getSingleTextAsString, index);
     }
-    // When every box has a character, call the "all filled" callback.
-    if (widget.onValidationBaseOnLength != null &&
-        widget.singleTextModelList
-            .every((element) => element.singleText.isNotEmpty)) {
+    // Call the "all filled" callback only when the code BECOMES complete.
+    // If it was already complete (for example the user typed over a middle
+    // box), do not call it again.
+    if (widget.onValidationBaseOnLength != null && !wasComplete && _isComplete) {
       widget.onValidationBaseOnLength!();
     }
   }
