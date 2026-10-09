@@ -5,6 +5,7 @@ topics:
   - single
   - text
   - field
+  - text-field
 version: 1.0.5+1
 homepage: https://github.com/NicosNicolaou16/dynamic_single_text_field
 repository: https://github.com/NicosNicolaou16/dynamic_single_text_field
