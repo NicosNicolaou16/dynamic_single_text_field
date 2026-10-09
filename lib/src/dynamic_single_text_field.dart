@@ -78,7 +78,8 @@ class DynamicSingleTextField extends StatefulWidget {
   /// that changed.
   final void Function(String value, int index)? onChangeSingleText;
 
-  /// This parameter is the call back to get the character when press the done/return button from the keyboard
+  /// This parameter is the call back to get the whole text (all single texts
+  /// joined) when press the done/return button from the keyboard.
   final ValueChanged<String>? onSubmitSingleText;
 
   /// This parameter is the call back to validate the characters based on the length
