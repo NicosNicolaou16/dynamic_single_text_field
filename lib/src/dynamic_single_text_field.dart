@@ -183,8 +183,6 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
       // The removed text fields are still on screen until this frame ends,
       // so dispose them after the frame.
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        // The removed text fields are still on screen until this frame ends.
-        // Disposing them now would crash, so dispose them after the frame.
         controller.dispose();
         focusNode.dispose();
       });
