@@ -14,6 +14,7 @@ Inspired by OTP/passcode input designs (But without the OTP/passcode functionali
 
 ## 🚀 Getting started
 
+Minimum Flutter SDK: 3.10.0 <br />
 Version Minimum Flutter SDK: 3.0.0
 
 Tested Versioning: <br />
