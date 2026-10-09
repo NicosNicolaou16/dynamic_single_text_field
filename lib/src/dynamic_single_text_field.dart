@@ -232,7 +232,7 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
                   widget.showLabelsType ==
                       ShowLabelsTypeEnum.showBothLabelsType)
                 _topLabel(singleTextModel),
-              Expanded(
+              Flexible(
                 child: _singleTextField(
                     singleTextModel,
                     _textEditingControllerList[index],
