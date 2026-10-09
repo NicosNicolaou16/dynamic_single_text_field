@@ -353,8 +353,9 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
     for (int i = 0; i < count; i++) {
       _setSingleText(start + i, text[i]);
     }
-    // Put the focus on the last box that was filled.
-    _moveFocusTo(start + count - 1);
+    // Focus the box AFTER the last filled one, so the user can keep typing.
+    // If the paste reached the last box, stay on the last box.
+    _moveFocusTo(math.min(start + count, widget.singleTextModelList.length - 1));
   }
 
   /// This method is to set the text of one box, in both its model and its
