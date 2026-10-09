@@ -82,7 +82,8 @@ class DynamicSingleTextField extends StatefulWidget {
   /// joined) when press the done/return button from the keyboard.
   final ValueChanged<String>? onSubmitSingleText;
 
-  /// This parameter is the call back to validate the characters based on the length
+  /// This parameter is the call back called once, when every single text
+  /// becomes filled.
   final VoidCallback? onValidationBaseOnLength;
 
   ///Labels Section
