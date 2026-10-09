@@ -6,7 +6,7 @@ topics:
   - text
   - field
 version: 1.0.5+1
-homepage: https://github.com/NicosNicolaou16/dynamic_single_text_field/tree/main
+homepage: https://github.com/NicosNicolaou16/dynamic_single_text_field
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
