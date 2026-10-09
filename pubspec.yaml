@@ -5,12 +5,15 @@ topics:
   - single
   - text
   - field
-version: 1.0.5+1
-homepage: https://github.com/NicosNicolaou16/dynamic_single_text_field/tree/main
+  - text-field
+version: 1.0.6
+homepage: https://github.com/NicosNicolaou16/dynamic_single_text_field
+repository: https://github.com/NicosNicolaou16/dynamic_single_text_field
+issue_tracker: https://github.com/NicosNicolaou16/dynamic_single_text_field/issues
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
-  flutter: ">=2.12.0"
+  flutter: ">=3.10.0"
 
 dependencies:
   flutter:

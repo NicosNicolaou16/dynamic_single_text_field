@@ -14,11 +14,12 @@ Inspired by OTP/passcode input designs (But without the OTP/passcode functionali
 
 ## 🚀 Getting started
 
-Version Minimum Flutter SDK: 3.0.0
+Minimum Flutter SDK: 3.10.0 <br />
+Minimum Dart SDK: 3.0.0 <br />
 
-Tested Versioning: <br />
-Flutter SDK version: 3.44.8 <br />
-Dart Version: 3.12.2 <br /> <br />
+Tested with: <br />
+Flutter SDK version: 3.47.7 <br />
+Dart Version: 3.13.5 <br /> <br />
 
 ## 💡 Usage
 
@@ -45,6 +46,7 @@ Dart Version: 3.12.2 <br /> <br />
 | `textInputType`            | This parameter is the option to set the input type for single texts, with default value text                                                                                                                     |
 | `cursorColor`              | This parameter is the option to set the cursor color for single texts, with default value black                                                                                                                  |
 | `isReadOnly`               | This parameter is the option to set if the single texts is read only, with default value false                                                                                                                   |
+| `autofillHints`            | Optional autofill hints. Use `const [AutofillHints.oneTimeCode]` for SMS codes, which makes SMS code autofill reliable, especially on iOS.                                                                       |
 | `isObscureText`            | This parameter is the option to set if the single texts is obscure, with default value false                                                                                                                     |
 | `obscuringCharacter`       | This parameter is the option to set the obscuring character for single texts, with default value •                                                                                                               |
 | `singleTextFillColor`      | This parameter is the option to set the fill color for single texts                                                                                                                                              |
