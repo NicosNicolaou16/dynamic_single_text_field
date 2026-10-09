@@ -58,6 +58,10 @@ class DynamicSingleTextField extends StatefulWidget {
   /// This parameter is the option to set if the single texts is read only, with default value false
   final bool isReadOnly;
 
+  /// This parameter is the option to set autofill hints for the single texts.
+  /// Use `[AutofillHints.oneTimeCode]` so the keyboard suggests SMS codes.
+  final Iterable<String>? autofillHints;
+
   /// This parameter is the option to set if the single texts is obscure, with default value false
   final bool isObscureText;
 
@@ -116,6 +120,7 @@ class DynamicSingleTextField extends StatefulWidget {
     this.textInputType = TextInputType.text,
     this.cursorColor = Colors.black,
     this.isReadOnly = false,
+    this.autofillHints,
     this.isObscureText = false,
     this.obscuringCharacter = "•",
     this.singleTextFillColor,
@@ -213,15 +218,36 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
     _syncTexts();
   }
 
-  /// This method is to handle the focus process
+  /// This method is to handle the focus process after a box changes:
+  /// move to the next box after typing, or to the previous box after deleting.
   /// @param index is the index of the single text
   void _focusProcess(int index) {
-    if (widget.singleTextModelList[index].singleText.isEmpty && index != 0) {
-      _focusNodeList[index].previousFocus();
-    } else if (index != widget.singleTextModelList.length - 1 &&
-        widget.singleTextModelList[index].singleText.isNotEmpty) {
-      _focusNodeList[index].nextFocus();
+    final bool isEmpty = widget.singleTextModelList[index].singleText.isEmpty;
+    if (isEmpty && index > 0) {
+      // The box was cleared: go back one box.
+      _moveFocusTo(index - 1);
+    } else if (!isEmpty && index < widget.singleTextModelList.length - 1) {
+      // The box got a character: go forward one box.
+      _moveFocusTo(index + 1);
     }
+  }
+
+  /// This method is to move the focus to the box at [index].
+  /// It waits until the current frame is finished, so the keyboard has
+  /// finished delivering the character to THIS box before the focus moves.
+  /// Otherwise the keyboard can send the same character again to the next box.
+  /// @param index is the index of the single text to focus
+  void _moveFocusTo(int index) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      // The widget may be gone, or the box removed, by the time this runs.
+      if (mounted && index < _focusNodeList.length) {
+        // Focus exactly this box, by index, instead of nextFocus()/previousFocus(),
+        // which follow Flutter's focus order and can skip a box.
+        _focusNodeList[index].requestFocus();
+      }
+    });
+    // Make sure a frame is coming, so the callback above actually runs.
+    WidgetsBinding.instance.ensureVisualUpdate();
   }
 
   /// This method is to handle the hardware input callback
@@ -273,9 +299,9 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
     String inserted = value;
     if (oldText.isNotEmpty && value.length > oldText.length) {
       inserted = value.startsWith(oldText)
-      // Cursor was after the old character: "5" + "7" = "57" -> added "7".
+          // Cursor was after the old character: "5" + "7" = "57" -> added "7".
           ? value.substring(oldText.length)
-      // Cursor was before the old character: "7" + "5" = "75" -> added "7".
+          // Cursor was before the old character: "7" + "5" = "75" -> added "7".
           : value.substring(0, value.length - oldText.length);
     }
 
@@ -303,12 +329,12 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
     // the last box. Example: 6 boxes, start at box 4 (index 3), "123456"
     // -> only 3 boxes are left, so count = 3.
     final int count =
-    math.min(text.length, widget.singleTextModelList.length - start);
+        math.min(text.length, widget.singleTextModelList.length - start);
     for (int i = 0; i < count; i++) {
       _setSingleText(start + i, text[i]);
     }
     // Put the focus on the last box that was filled.
-    _focusNodeList[start + count - 1].requestFocus();
+    _moveFocusTo(start + count - 1);
   }
 
   /// This method is to set the text of one box, in both its model and its
@@ -425,6 +451,7 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
         keyboardType: widget.textInputType,
         cursorColor: widget.cursorColor,
         readOnly: widget.isReadOnly,
+        autofillHints: widget.autofillHints,
         obscureText: widget.isObscureText,
         obscuringCharacter: widget.obscuringCharacter,
         style: widget.textFieldTextStyle ?? const TextStyle(),
