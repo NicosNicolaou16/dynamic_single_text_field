@@ -1,3 +1,4 @@
+import 'dart:math' as math;
 import 'package:dynamic_single_text_field/src/enums/show_labels_type_enum.dart';
 import 'package:dynamic_single_text_field/src/models/single_text_model.dart';
 import 'package:flutter/material.dart';
@@ -257,6 +258,93 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
     }
   }
 
+  /// This method is called when the text of one single text changes.
+  /// The value can be more than one character when the user types over a
+  /// filled box, pastes a code, or uses SMS autofill.
+  /// @param value is the new text of that single text
+  /// @param index is the index of the single text
+  void _onSingleTextChanged(String value, int index) {
+    // The character this box had before the change ("" if it was empty).
+    final String oldText = widget.singleTextModelList[index].singleText;
+
+    // Work out what the user ADDED.
+    // Empty box:  value is exactly what was added (e.g. "5" or "123456").
+    // Filled box: the old character is still in value, next to the new one.
+    String inserted = value;
+    if (oldText.isNotEmpty && value.length > oldText.length) {
+      inserted = value.startsWith(oldText)
+      // Cursor was after the old character: "5" + "7" = "57" -> added "7".
+          ? value.substring(oldText.length)
+      // Cursor was before the old character: "7" + "5" = "75" -> added "7".
+          : value.substring(0, value.length - oldText.length);
+    }
+
+    if (inserted.length > 1) {
+      // More than one character arrived: a paste or an SMS autofill.
+      // Put one character in each box, starting from this box.
+      _fillFrom(index, inserted);
+    } else {
+      // One character (typing / typing over a filled box) or "" (delete).
+      _setSingleText(index, inserted);
+      // Move to the next box after typing, or the previous one after deleting.
+      _focusProcess(index);
+    }
+
+    // Tell the developer about the change (same callbacks as before).
+    _notifyChanged(index);
+  }
+
+  /// This method is to put one character in each box, starting at [start].
+  /// Characters that do not fit (more characters than boxes left) are ignored.
+  /// @param start is the index of the first box to fill
+  /// @param text is the pasted or autofilled text
+  void _fillFrom(int start, String text) {
+    // How many boxes we can fill: the length of the text, but never past
+    // the last box. Example: 6 boxes, start at box 4 (index 3), "123456"
+    // -> only 3 boxes are left, so count = 3.
+    final int count =
+    math.min(text.length, widget.singleTextModelList.length - start);
+    for (int i = 0; i < count; i++) {
+      _setSingleText(start + i, text[i]);
+    }
+    // Put the focus on the last box that was filled.
+    _focusNodeList[start + count - 1].requestFocus();
+  }
+
+  /// This method is to set the text of one box, in both its model and its
+  /// text field, so they always match.
+  /// @param index is the index of the single text
+  /// @param text is the new text (one character, or "" to clear the box)
+  void _setSingleText(int index, String text) {
+    // Keep the model updated, as before, because users read their values from it.
+    widget.singleTextModelList[index].singleText = text;
+    final TextEditingController controller = _textEditingControllerList[index];
+    // Update the text field only when needed (for example it shows "57"
+    // but should show "7"), and put the cursor after the character.
+    if (controller.text != text) {
+      controller.value = TextEditingValue(
+        text: text,
+        selection: TextSelection.collapsed(offset: text.length),
+      );
+    }
+  }
+
+  /// This method is to call the developer's callbacks after a change.
+  /// It is the same code that used to be inside onChanged.
+  /// @param index is the index of the single text that changed
+  void _notifyChanged(int index) {
+    // Send the whole text (all boxes joined) and the box that changed.
+    if (widget.onChangeSingleText != null) {
+      widget.onChangeSingleText!(_getSingleTextAsString, index);
+    }
+    // When every box has a character, call the "all filled" callback.
+    if (widget.onValidationBaseOnLength != null &&
+        widget.singleTextModelList
+            .every((element) => element.singleText.isNotEmpty)) {
+      widget.onValidationBaseOnLength!();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -357,6 +445,7 @@ class _DynamicSingleTextFieldState extends State<DynamicSingleTextField> {
           hintStyle: widget.singleHintTextStyle ?? const TextStyle(),
         ),
         onChanged: (String value) {
+          _onSingleTextChanged(value, index);
           widget.singleTextModelList[index].singleText = value;
           _focusProcess(index);
           if (widget.onChangeSingleText != null) {
