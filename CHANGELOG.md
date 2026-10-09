@@ -1,3 +1,20 @@
+## 1.0.6
+
+What's new:
+- Fixed `singleTextHeight` being ignored (the box filled the whole list height).
+- Fixed leaked controllers and a duplicated keyboard handler when the number of boxes changes.
+- Fixed the text and cursor being reset on every rebuild.
+- Fixed typing not moving to the next box unless the first box was filled.
+- Backspace on an empty box now goes back exactly one box (physical keyboards).
+- Pasting a code or SMS autofill now fills all boxes, and the focus moves to the next empty box.
+- Typing into a filled box replaces its character (the last box keeps its character).
+- `onValidationBaseOnLength` is now called once, when the code becomes complete.
+- Callbacks are now typed: `onSubmitSingleText` is a `ValueChanged<String>`, `onValidationBaseOnLength` a `VoidCallback`.
+- New optional `autofillHints` parameter (use `const [AutofillHints.oneTimeCode]` for SMS codes).
+- Minimum Flutter version is now 3.10.0 (matches Dart 3).
+- Added `repository` and `issue_tracker` links for pub.dev.
+- Updated the example project to Flutter SDK 3.47.7.
+
 ## 1.0.5+1
 
 What's new:
